@@ -12,6 +12,7 @@ vim.opt.softtabstop = 4       -- Number of spaces that a tab counts for while ed
 vim.opt.updatetime = 200      -- Faster completion (default is 4000ms)
 vim.opt.timeoutlen = 700     -- Time to wait for mapped sequence
 
+vim.opt.list = false
 vim.opt.termguicolors = true  -- Enable 24-bit RGB colors
 
 vim.opt.clipboard = "unnamedplus"
