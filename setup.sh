@@ -7,7 +7,7 @@ sudo pacman -Syu --noconfirm ripgrep fzf neovim git
 
 
 # Dotfiles location
-DOTFILES="$HOME/dotfiles"
+DOTFILES="$HOME/.dotfiles"
 
 # Ensure config directory exists
 mkdir -p "$HOME/.config"
