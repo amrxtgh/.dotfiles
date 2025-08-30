@@ -39,7 +39,7 @@ return {
       vim.api.nvim_set_keymap("n", "<leader>ntr", ":Neotree reveal right<CR>", opts)
       vim.api.nvim_set_keymap("n", "<leader>ntt", ":Neotree reveal top<CR>", opts)
       vim.api.nvim_set_keymap("n", "<leader>ntb", ":Neotree reveal bottom<CR>", opts)
-      vim.api.nvim_set_keymap("n", "<leader>ntc", ":Neotree close<CR>", opts)
+      vim.api.nvim_set_keymap("n", "<leader>nc", ":Neotree close<CR>", opts)
     end,
   }
 }

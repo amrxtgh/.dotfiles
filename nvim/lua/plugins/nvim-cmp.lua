@@ -17,12 +17,15 @@ return {
         snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
         mapping = {
           ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
           ["<C-Space>"] = cmp.mapping.complete(),            
           -- hjkl navigation inside menu
           ["<C-h>"] = cmp.mapping.select_prev_item(),
           ["<C-j>"] = cmp.mapping.select_next_item(),
           ["<C-k>"] = cmp.mapping.select_prev_item(),
           ["<C-l>"] = cmp.mapping.select_next_item(),
+          ["<Up>"] = cmp.mapping.select_prev_item(),
+          ["<Down>"] = cmp.mapping.select_next_item(),
         },
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
