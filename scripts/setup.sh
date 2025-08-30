@@ -13,7 +13,7 @@ DOTFILES="$HOME/.dotfiles"
 mkdir -p "$HOME/.config"
 
 rm -rf ~/.gitconfig
-ln -sf "~/.dotfiles/git/.gitconfig" "~/.gitconfig"
+ln -sf ~/.dotfiles/git/.gitconfig ~/.gitconfig
 
 # Remove older symlink
 rm -rf ~/.config/nvim
