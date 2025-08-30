@@ -12,6 +12,8 @@ DOTFILES="$HOME/.dotfiles"
 # Ensure config directory exists
 mkdir -p "$HOME/.config"
 
+ln -sf "~/.dotfiles/git/.gitconfig" "~/.gitconfig"
+
 # Remove older symlink
 rm -rf ~/.config/nvim
 # Neovim symlink
