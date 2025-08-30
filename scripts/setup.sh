@@ -12,6 +12,7 @@ DOTFILES="$HOME/.dotfiles"
 # Ensure config directory exists
 mkdir -p "$HOME/.config"
 
+rm -rf ~/.gitconfig
 ln -sf "~/.dotfiles/git/.gitconfig" "~/.gitconfig"
 
 # Remove older symlink
