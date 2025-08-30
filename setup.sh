@@ -15,10 +15,6 @@ mkdir -p "$HOME/.config"
 # Neovim symlink
 ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
 
-# Add more symlinks here if needed
-# Example:
-# ln -sf "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
-# ln -sf "$DOTFILES/alacritty" "$HOME/.config/alacritty"
 
 echo "All symlinks created successfully!"
 
