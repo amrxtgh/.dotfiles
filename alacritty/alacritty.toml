@@ -1,0 +1,62 @@
+[window]
+opacity = 0.9
+blur = true
+dynamic_title = true
+decorations = "None"
+
+[window.padding]
+x = 5
+y = 5
+
+[window.position]
+x = 100
+y = 100
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+size = 15.0
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[colors.primary]
+background = "0x000000"
+foreground = "0xffffff"
+
+[colors.normal]
+black   = "0x000000"
+red     = "0xff5f5f"
+green   = "0x5fff87"
+yellow  = "0xffaf5f"
+blue    = "0x5fafff"
+magenta = "0xaf87ff"
+cyan    = "0x5fffff"
+white   = "0xffffff"
+
+[colors.bright]
+black   = "0x4d4d4d"
+red     = "0xff7878"
+green   = "0x87ffaf"
+yellow  = "0xffd787"
+blue    = "0x87d7ff"
+magenta = "0xafafff"
+cyan    = "0x87ffff"
+white   = "0xffffff"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+
