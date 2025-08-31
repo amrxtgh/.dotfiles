@@ -34,5 +34,9 @@ return {
       vim.api.nvim_create_autocmd("FileType",{pattern="java",callback=function() jdtls.start_or_attach(cfg) end})
     end,
   },
+    {
+        "mfussenegger/nvim-jdtls",
+        ft = { "java" },
+    }
 }
 
