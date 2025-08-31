@@ -74,7 +74,7 @@ plugins=(git zsh-autosuggestions zsh-autocomplete)
 # Reset exit code to 0 on Ctrl+C
 source $ZSH/oh-my-zsh.sh
 # Custom prompt: username@hostname, last 3 path components, Git branch
-PROMPT="%n@%m %{${fg_bold[red]}%}:: %{${fg[green]}%}%3~$(git_prompt_info)%(0?. . %{${fg[red]}%}%? )%{${fg[blue]}%}»%{${reset_color}%} "
+PROMPT="%n@%m %{${fg_bold[red]}%}:: %{${fg[green]}%}%3~$(git_prompt_info)%{${fg[blue]}%}»%{${reset_color}%} "
 
 # Optional: reset exit code on Ctrl+C
 TRAPINT() { return 0 }
