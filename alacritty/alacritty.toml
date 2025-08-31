@@ -61,6 +61,6 @@ unfocused_hollow = true
 
 [[keyboard.bindings]]
 key = "T"
-mods = "Control|Shift"
+mods = "Control|Alt"
 action = "SpawnNewInstance"
 
