@@ -26,33 +26,12 @@ return {
 
       for _, server in ipairs(servers) do
         lspconfig[server].setup({})
-      local jdtls = require("jdtls")
-      local workspace_dir = vim.fn.stdpath("data") .. "/jdtls-workspace/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-      local jdtls_jar = vim.fn.glob("~/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_*.jar")
-      local jdtls_config = "~/.local/share/jdtls/config_linux"
-
-      local java_config = {
-        cmd = {
-          "java",
-          "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-          "-Dosgi.bundles.defaultStartLevel=4",
-          "-Declipse.product=org.eclipse.jdt.ls.core.product",
-          "-noverify",
-          "-Xmx1G",
-          "-jar", jdtls_jar,
-          "-configuration", jdtls_config,
-          "-data", workspace_dir,
-        },
-        root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
-      }
-
-      -- Auto-attach JDTLS only for Java files
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "java",
-        callback = function()
-          jdtls.start_or_attach(java_config)
         end,
-      })
+       local jdtls=require("jdtls")
+      local ws=vim.fn.stdpath("data").."/jdtls-workspace/"..vim.fn.fnamemodify(vim.fn.getcwd(),":p:h:t")
+      local jar=vim.fn.glob("~/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_*.jar")
+      local cfg={cmd={"java","-Declipse.application=org.eclipse.jdt.ls.core.id1","-Dosgi.bundles.defaultStartLevel=4","-Declipse.product=org.eclipse.jdt.ls.core.product","-noverify","-Xmx1G","-jar",jar,"-configuration","~/.local/share/jdtls/config_linux","-data",ws},root_dir=require("jdtls.setup").find_root({".git","mvnw","gradlew"})}
+      vim.api.nvim_create_autocmd("FileType",{pattern="java",callback=function() jdtls.start_or_attach(cfg) end})
     end,
   },
 }
