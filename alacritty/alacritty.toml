@@ -59,4 +59,8 @@ white   = "0xffffff"
 style = "Block"
 unfocused_hollow = true
 
+[[keyboard.bindings]]
+key = "T"
+mods = "Control|Shift"
+action = "SpawnNewInstance"
 

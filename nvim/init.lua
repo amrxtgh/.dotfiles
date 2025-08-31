@@ -1,6 +1,8 @@
 -- Line Numbers
 vim.opt.number = true         -- Show absolute line numbers
 vim.opt.relativenumber = true -- Show relative line numbers
+
+vim.opt.fillchars:append({ eob = ' ' })
 --identation 
 vim.opt.autoindent = true  
 vim.opt.smartindent = true
