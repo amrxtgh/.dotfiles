@@ -26,7 +26,7 @@ return {
 
       for _, server in ipairs(servers) do
         lspconfig[server].setup({})
-        end,
+        end
        local jdtls=require("jdtls")
       local ws=vim.fn.stdpath("data").."/jdtls-workspace/"..vim.fn.fnamemodify(vim.fn.getcwd(),":p:h:t")
       local jar=vim.fn.glob("~/.local/share/jdtls/plugins/org.eclipse.equinox.launcher_*.jar")
