@@ -6,13 +6,18 @@ vim.opt.fillchars:append({ eob = ' ' })
 --identation 
 vim.opt.autoindent = true  
 vim.opt.smartindent = true
+vim.opt.cindent = true
+
 vim.opt.expandtab = true      -- Use spaces instead of tabs
 vim.opt.tabstop = 4           -- Number of spaces that a tab counts for
-vim.opt.shiftwidth = 4        -- Number of spaces to use for each step of indent
-vim.opt.softtabstop = 4       -- Number of spaces that a tab counts for while editing
+vim.opt.shiftwidth = 2       -- Number of spaces to use for each step of indent
+vim.opt.softtabstop = 2       -- Number of spaces that a tab counts for while editing
+vim.opt.shiftround = true
+vim.opt.smarttab = true
 
 vim.opt.updatetime = 200      -- Faster completion (default is 4000ms)
-vim.opt.timeoutlen = 700     -- Time to wait for mapped sequence
+vim.opt.timeoutlen = 800    -- Time to wait for mapped sequence
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 vim.opt.list = false
 vim.opt.termguicolors = true  -- Enable 24-bit RGB colors
