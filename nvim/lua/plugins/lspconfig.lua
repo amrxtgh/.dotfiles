@@ -18,10 +18,11 @@ return {
           "bashls",
           "jsonls",
           "clangd",
+          "gopls"
         },
       })
       local lspconfig = require("lspconfig")
-      local servers = { "lua_ls", "vimls", "pyright", "ts_ls", "html", "cssls", "bashls", "jsonls", "clangd"}
+      local servers = { "lua_ls", "vimls", "pyright", "ts_ls", "html", "cssls", "bashls", "jsonls", "clangd", "gopls"}
       for _, server in ipairs(servers) do
         lspconfig[server].setup({})
       end

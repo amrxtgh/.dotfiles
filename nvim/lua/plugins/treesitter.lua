@@ -18,6 +18,7 @@ return {
           "bash",
           "markdown",
           "markdown_inline",
+          "go"
         },
         sync_install = false,
         auto_install = true,
