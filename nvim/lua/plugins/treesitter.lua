@@ -18,7 +18,7 @@ return {
           "bash",
           "markdown",
           "markdown_inline",
-          "go"
+          "go",
         },
         sync_install = false,
         auto_install = true,
@@ -27,8 +27,7 @@ return {
           enable = true,             
           additional_vim_regex_highlighting = false,
         },
-        incremental_selection = { enable = false }
- 
+
         indent = {
           enable = true,             
         },
