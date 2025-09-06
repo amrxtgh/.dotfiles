@@ -21,7 +21,7 @@ history = 10000
 multiplier = 3
 
 [font]
-size = 8.0
+size = 11.0
 
 [font.normal]
 family = "JetBrains Mono"
@@ -68,3 +68,5 @@ key = "T"
 mods = "Control|Alt"
 action = "SpawnNewInstance"
 
+[mouse]
+hide_when_typing = true
