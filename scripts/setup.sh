@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 sudo pacman -Syu --noconfirm ripgrep fzf neovim git
 
 rm -rf ~/.gitconfig

@@ -70,15 +70,46 @@ ZSH_THEME="cypher"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  )
 # Reset exit code to 0 on Ctrl+C
 source $ZSH/oh-my-zsh.sh
+
+#optimize history settings
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+
 # Custom prompt: username@hostname, last 3 path components, Git branch
-PROMPT='%F{white}%n@%m%f %F{red}::%f %F{green}%~%f$(git branch 2>/dev/null | grep "^\*" | cut -d" " -f2 | sed "s/.*/ (%F{white}&%f)/" 2>/dev/null) %F{blue}»%f '
+
+# Simple but informative prompt
+
+# Set up git prompt variables first
+ZSH_THEME_GIT_PROMPT_PREFIX=" ("
+ZSH_THEME_GIT_PROMPT_SUFFIX=")"
+ZSH_THEME_GIT_PROMPT_DIRTY="*"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+# Minimal prompt
+PROMPT='%F{white}%n@%m%f %F{red}::%f %F{green}%~%f$(git_prompt_info) '
+
 # Optional: reset exit code on Ctrl+C
 TRAPINT() { return 0 }
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
 
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/ 
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/ 
+
+
+#for optimal performance
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
