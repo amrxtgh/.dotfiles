@@ -70,7 +70,7 @@ ZSH_THEME="cypher"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-autocomplete)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 # Reset exit code to 0 on Ctrl+C
 source $ZSH/oh-my-zsh.sh
 # Custom prompt: username@hostname, last 3 path components, Git branch
@@ -94,7 +94,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
+export ARCHFLAGS="-arch $(uname -m)"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
