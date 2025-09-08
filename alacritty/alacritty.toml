@@ -3,14 +3,15 @@ program = "/usr/bin/zsh"
 args = ["--login"]
 
 [window]
-opacity = 1 
+opacity = 0.75 
 blur = true
 dynamic_title = true
+startup_mode = "Windowed"
 decorations = "None"
 
 [window.padding]
-x = 5
-y = 5
+x = 12
+y = 12
 
 [window.position]
 x = 100
@@ -21,19 +22,24 @@ history = 10000
 multiplier = 3
 
 [font]
-size = 13.0
+size = 12.0
 
 [font.normal]
-family = "JetBrains Mono"
-style = "Regular"
+#family = "JetBrains Mono"
+family = "Fira Code"
+#style = "Regular"
+style = "light"
 
 [font.bold]
-family = "JetBrains Mono"
-style = "Bold"
+#family = "JetBrains Mono"
+family = "Fira Code"
+style = "Medium"
 
 [font.italic]
-family = "JetBrains Mono"
-style = "Italic"
+#family = "JetBrains Mono"
+family = "Fira Code"
+#style = "Italic"
+style = "Light Italic"
 
 [colors.primary]
 background = "0x000000"
