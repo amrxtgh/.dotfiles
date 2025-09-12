@@ -96,7 +96,9 @@ ZSH_THEME_GIT_PROMPT_DIRTY="*"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 # Minimal prompt
-PROMPT='%F{white}%n@%m%f %F{red}::%f %F{green}%~%f$(git_prompt_info) '
+//PROMPT='%F{white}%n@%m%f %F{red}::%f %F{green}%~%f$(git_prompt_info) '
+PROMPT='%F{white}%n@%m%f %F{red}::%f %F{green}%~%f$(git_prompt_info)%F{blue}»%f '
+
 
 # Optional: reset exit code on Ctrl+C
 TRAPINT() { return 0 }
