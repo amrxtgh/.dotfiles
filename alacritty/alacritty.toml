@@ -26,18 +26,18 @@ size = 12.0
 
 [font.normal]
 #family = "JetBrains Mono"
-family = "Fira Code"
+family = "Iosevka Term"
 #style = "Regular"
 style = "light"
 
 [font.bold]
 #family = "JetBrains Mono"
-family = "Fira Code"
+family = "Iosevka Term"
 style = "Medium"
 
 [font.italic]
 #family = "JetBrains Mono"
-family = "Fira Code"
+family = "Iosevka Term"
 #style = "Italic"
 style = "Light Italic"
 
