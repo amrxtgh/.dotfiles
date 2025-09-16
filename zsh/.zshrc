@@ -136,7 +136,22 @@ export ARCHFLAGS="-arch $(uname -m)"
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
-#
+alias n="nvim"
+alias q="clear"
+alias off="poweroff"
+
+#git aliases
+alias gst="git status"
+alias ga="git add"
+alias gcm="git commit -m"
+alias gcsm="git commit -s -m"
+alias gcl="git clone"
+alias gp="git push"
+alias gl="git log"
+alias gco="git checkout"
+alias gb="git branch"
+alias gp="git pull"           # pull updates from remote
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
