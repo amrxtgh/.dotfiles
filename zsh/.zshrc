@@ -138,7 +138,7 @@ export ARCHFLAGS="-arch $(uname -m)"
 # For a full list of active aliases, run `alias`.
 alias n="nvim"
 alias q="clear"
-alias off="poweroff"
+alias po="poweroff"
 
 #git aliases
 alias gst="git status"
