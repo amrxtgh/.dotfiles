@@ -6,9 +6,9 @@ return {
       "nvim-lua/plenary.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make", 
+        build = "make",
         cond = function()
-          return vim.fn.executable "make" == 1 
+          return vim.fn.executable "make" == 1
         end,
       },
     },
@@ -30,6 +30,7 @@ return {
           prompt_prefix = "🔍 ",
           selection_caret = " ",
           path_display = { "smart" },
+          file_ignore_patterns = { "%.git/", "%.gitignore", "%.dotfiles/" }, -- ignore git and dotfiles
           mappings = {
             i = {
               ["<CR>"] = actions.select_default,
@@ -64,3 +65,4 @@ return {
     end,
   }
 }
+

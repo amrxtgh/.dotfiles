@@ -138,7 +138,7 @@ export ARCHFLAGS="-arch $(uname -m)"
 # For a full list of active aliases, run `alias`.
 alias n="nvim"
 alias q="clear"
-alias po="poweroff"
+alias off="poweroff"
 
 #git aliases
 alias gst="git status"
@@ -151,7 +151,7 @@ alias gl="git log"
 alias gco="git checkout"
 alias gb="git branch"
 alias gp="git pull"           # pull updates from remote
-
+alias xxx="git add . && git commit -m "update" && git push"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
