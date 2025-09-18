@@ -18,5 +18,6 @@ cp ~/.dotfiles/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 cp ~/.dotfiles/zsh/.zshrc ~/.zshrc
 source ~/.zshrc
 chmod 600 ~/.ssh/id_rsa_github
+alacritty migrate
 
 echo "All symlinks created successfully!"
