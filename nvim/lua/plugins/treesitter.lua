@@ -1,11 +1,12 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate", -- keep parsers up to date
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "vimdoc", "javascript", "typescript", "c", "lua", "rust",
-          "jsdoc", "bash", "go", -- Add "html" here if needed
+          "jsdoc", "bash", "go", -- add "html" if you need
         },
         sync_install = false,
         auto_install = true,
@@ -17,6 +18,7 @@ return {
             node_incremental = "<CR>",    -- expand selection
             node_decremental = "<BS>",    -- shrink selection
           },
+        },
         highlight = {
           enable = true,
           disable = function(lang, buf)
@@ -35,25 +37,28 @@ return {
         },
       })
 
-      -- Register custom templ parser
-      vim.treesitter.language.register("templ", "templ")
-    end
+      -- Only register "templ" if parser is installed
+      pcall(function()
+        vim.treesitter.language.register("templ", "templ")
+      end)
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    dependencies = "nvim-treesitter", -- Use dependencies instead of after
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
-      require('treesitter-context').setup({
+      require("treesitter-context").setup({
         enable = true,
         max_lines = 0,
         min_window_height = 0,
         line_numbers = true,
         multiline_threshold = 20,
-        trim_scope = 'outer',
-        mode = 'cursor',
+        trim_scope = "outer",
+        mode = "cursor",
         separator = nil,
         zindex = 20,
       })
-    end
-  }
+    end,
+  },
 }
+
