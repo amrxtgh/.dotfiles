@@ -5,6 +5,7 @@ return {
     config = function()
       require("rose-pine").setup({
         disable_background = true,
+        disable_italics = true,
         styles = {
           comments = { italic = false },
           keywords = { italic = false },
