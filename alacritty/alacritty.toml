@@ -1,12 +1,12 @@
 # Import catppuccin mocha theme
-import = ["~/.dotfiles/alacritty/catppuccin-mocha.toml"]
+#import = ["~/.dotfiles/alacritty/catppuccin-mocha.toml"]
 
 [terminal.shell]
 program = "/usr/bin/zsh"
 args = ["--login"]
 
 [window]
-opacity = 0.95
+opacity = 1
 blur = true
 dynamic_title = true
 startup_mode = "Windowed"
@@ -22,16 +22,18 @@ multiplier = 3
 size = 12.0
 
 [font.normal]
-family = "JetBrains Mono"
+#family = "JetBrains Mono"
+family = "SF Mono"
 style = "Regular"
 
 [font.bold]
-family = "JetBrains Mono"
+family = "SF Mono"
 style = "Bold"
 
 [font.italic]
-family = "JetBrains Mono"
+family = "SF Mono"
 style = "Italic"
+
 
 [cursor]
 style = "Block"
