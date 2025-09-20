@@ -90,15 +90,21 @@ setopt appendhistory
 # Simple but informative prompt
 
 # Set up git prompt variables first
-ZSH_THEME_GIT_PROMPT_PREFIX=" ("
-ZSH_THEME_GIT_PROMPT_SUFFIX=")"
-ZSH_THEME_GIT_PROMPT_DIRTY="*"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
+#ZSH_THEME_GIT_PROMPT_PREFIX=" ("
+#ZSH_THEME_GIT_PROMPT_SUFFIX=")"
+#ZSH_THEME_GIT_PROMPT_DIRTY="*"
+#ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 # Minimal prompt
 #PROMPT='%F{white}%n@%m%f %F{red}::%f %F{green}%~%f$(git_prompt_info) '
-PROMPT='%F{white}%n@%m%f %F{red}::%f %F{green}%~%f$(git_prompt_info) %F{blue}»%f '
+#PROMPT='%F{white}%n@%m%f %F{red}::%f %F{green}%~%f$(git_prompt_info) %F{blue}»%f '
+autoload -Uz vcs_info
+precmd() { vcs_info }
 
+zstyle ':vcs_info:git:*' formats '%F{blue}git:%f%F{red}(%b)%f'
+zstyle ':vcs_info:*' enable git
+
+PROMPT='%F{green}%~%f ${vcs_info_msg_0_} %F{yellow}✗%f '
 
 # Optional: reset exit code on Ctrl+C
 TRAPINT() { return 0 }
