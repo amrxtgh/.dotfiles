@@ -22,7 +22,6 @@ multiplier = 3
 size = 12.0
 
 [font.normal]
-#family = "JetBrains Mono"
 family = "SF Mono"
 style = "Regular"
 
