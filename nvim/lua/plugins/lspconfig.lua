@@ -21,7 +21,7 @@ return {
           "gopls"
         },
       })
-      local lspconfig = require("lspconfig")
+      vim.lsp.config.pyright.setup{}
       local servers = { "lua_ls", "vimls", "pyright", "ts_ls", "html", "cssls", "bashls", "jsonls", "clangd", "gopls"}
       for _, server in ipairs(servers) do
         lspconfig[server].setup({})
