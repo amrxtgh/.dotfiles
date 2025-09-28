@@ -1,1 +1,0 @@
-/home/amrxtgh/.config/omarchy/current/theme/neovim.lua

@@ -6,8 +6,9 @@ return {
       "williamboman/mason.nvim",
     },
     config = function()
+      local mason_lspconfig = require("mason-lspconfig")
       require("mason").setup()
-      require("mason-lspconfig").setup({
+      mason_lspconfig.setup({
         ensure_installed = {
           "lua_ls",
           "vimls",
@@ -21,11 +22,16 @@ return {
           "gopls"
         },
       })
-      vim.lsp.config.pyright.setup{}
+      
+      -- Use the new vim.lsp.config API instead of require('lspconfig')
       local servers = { "lua_ls", "vimls", "pyright", "ts_ls", "html", "cssls", "bashls", "jsonls", "clangd", "gopls"}
       for _, server in ipairs(servers) do
-        lspconfig[server].setup({})
+        vim.lsp.config[server] = {
+          cmd = vim.lsp.config[server] and vim.lsp.config[server].cmd or nil,
+          root_markers = vim.lsp.config[server] and vim.lsp.config[server].root_markers or nil,
+        }
       end
+      
       -- JDTLS setup with snippet configuration
       local jdtls = require("jdtls")
       local ws = vim.fn.stdpath("data") .. "/jdtls-workspace/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
@@ -69,7 +75,6 @@ return {
             },
           }
         },
-
         -- Alternative: Disable snippets entirely if you prefer
         capabilities = (function()
           local capabilities = vim.lsp.protocol.make_client_capabilities()

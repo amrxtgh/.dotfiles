@@ -1,4 +1,3 @@
--- Line Numbers
 vim.opt.number = true         -- Show absolute line numbers
 vim.opt.relativenumber = true -- Show relative line numbers
 
@@ -22,7 +21,7 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.list = false
 vim.opt.termguicolors = true  -- Enable 24-bit RGB colors
 
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = 'unnamedplus'
 
 vim.g.mapleader = " "         -- Set space as leader key
 
