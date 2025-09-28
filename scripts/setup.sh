@@ -9,6 +9,7 @@ rm -rf ~/.config/alacritty/alacritty.toml
 
 mkdir -p ~/.config
 mkdir -p ~/.ssh
+mkdir -p ~/.config/alacritty
 
 cp -r ~/.dotfiles/git/.gitconfig ~/.gitconfig
 cp -r ~/.dotfiles/nvim/ ~/.config/nvim/
