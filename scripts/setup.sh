@@ -1,5 +1,5 @@
 #!/bin/zsh
-sudo pacman -Syu --noconfirm ripgrep fzf neovim git
+sudo pacman -Syu --noconfirm ripgrep fzf neovim git ttf-cascadia-mono-nerd
 
 rm -rf ~/.gitconfig
 rm -rf ~/.config/nvim
