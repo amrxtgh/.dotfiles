@@ -10,12 +10,12 @@ rm -rf ~/.config/alacritty/alacritty.toml
 mkdir -p ~/.config
 mkdir -p ~/.ssh
 
-cp ~/.dotfiles/git/.gitconfig ~/.gitconfig
+cp -r ~/.dotfiles/git/.gitconfig ~/.gitconfig
 cp -r ~/.dotfiles/nvim/ ~/.config/nvim/
-cp ~/.dotfiles/ssh/config ~/.ssh/config
-cp ~/.dotfiles/ssh/id_rsa_github ~/.ssh/id_rsa_github
-cp ~/.dotfiles/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
-cp ~/.dotfiles/zsh/.zshrc ~/.zshrc
+cp -r ~/.dotfiles/ssh/config ~/.ssh/config
+cp -r ~/.dotfiles/ssh/id_rsa_github ~/.ssh/id_rsa_github
+cp -r ~/.dotfiles/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+cp -r ~/.dotfiles/zsh/.zshrc ~/.zshrc
 source ~/.zshrc
 chmod 600 ~/.ssh/id_rsa_github
 alacritty migrate
