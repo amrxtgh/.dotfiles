@@ -145,6 +145,7 @@ export ARCHFLAGS="-arch $(uname -m)"
 alias n="nvim"
 alias q="clear"
 alias off="poweroff"
+alias z="exit"
 
 #git aliases
 alias gst="git status"
