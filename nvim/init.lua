@@ -24,6 +24,7 @@ vim.opt.termguicolors = true  -- Enable 24-bit RGB colors
 vim.opt.clipboard = 'unnamedplus'
 
 vim.g.mapleader = " "         -- Set space as leader key
+vim.keymap.set('n', '<leader>t', ':term<CR>', { noremap = true, silent = true})
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
