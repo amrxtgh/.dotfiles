@@ -167,7 +167,7 @@ gacp() {
     
     git add .
     git commit -m "$1"
-    git push
+    git push -u origin main
 }
 
 #alias xxx="git add . && git commit -m "update" && git push"
