@@ -158,7 +158,19 @@ alias gl="git log"
 alias gco="git checkout"
 alias gb="git branch"
 alias gp="git pull"           # pull updates from remote
-alias xxx="git add . && git commit -m "update" && git push"
+gacp() {
+    # Check if user provided a commit message
+    if [ -z "$1" ]; then
+        echo "Error: Commit message required"
+        return 1
+    fi
+    
+    git add .
+    git commit -m "$1"
+    git push
+}
+
+#alias xxx="git add . && git commit -m "update" && git push"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
