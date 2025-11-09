@@ -158,15 +158,20 @@ alias gl="git log"
 alias gco="git checkout"
 alias gb="git branch"
 alias gp="git pull"           # pull updates from remote
-gacp() {
-    # Check if user provided a commit message
-    if [ -z "$1" ]; then
-        echo "Error: Commit message required"
+xxx() {
+    # Prompt for commit message
+    echo -n "Enter commit message: "
+    read msg
+
+    # Check if message is empty
+    if [ -z "$msg" ]; then
+        echo "Error: Commit message cannot be empty"
         return 1
     fi
-    
+
+    # Stage, commit, and push
     git add .
-    git commit -m "$1"
+    git commit -m "$msg"
     git push -u origin main
 }
 
