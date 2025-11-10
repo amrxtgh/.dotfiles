@@ -1,5 +1,5 @@
 #!/bin/zsh
-sudo pacman -Syu --noconfirm ripgrep fzf neovim git ttf-cascadia-mono-nerd nodejs npm python python-pip curl go
+sudo pacman -Syu --noconfirm ripgrep fzf neovim git ttf-cascadia-mono-nerd nodejs npm python python-pip curl go rustup
 
 rm -rf ~/.gitconfig
 rm -rf ~/.config/nvim
