@@ -1,4 +1,4 @@
-#import = ["~/.dotfiles/alacritty/tokyonight.toml"]
+import = ["~/.dotfiles/alacritty/mac_black.toml"]
 
 [terminal.shell]
 program = "/usr/bin/zsh"
