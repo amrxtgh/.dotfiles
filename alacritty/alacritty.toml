@@ -1,11 +1,11 @@
-import = ["~/.dotfiles/alacritty/tokyonight.toml"]
+#import = ["~/.dotfiles/alacritty/tokyonight.toml"]
 
 [terminal.shell]
 program = "/usr/bin/zsh"
 args = ["--login"]
 
 [window]
-opacity = 1
+opacity = 8
 blur = true
 dynamic_title = true
 startup_mode = "Windowed"
