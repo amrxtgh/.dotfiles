@@ -1,13 +1,14 @@
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
+
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
-    "saadparwaiz1/cmp_luasnip",
     "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
   },
 
@@ -17,24 +18,30 @@ return {
 
     require("luasnip.loaders.from_vscode").lazy_load()
 
-    --------------------------------------------------------------------------
-    -- CORE SETUP
-    --------------------------------------------------------------------------
     cmp.setup({
+      --------------------------------------------------------------------------
+      -- SNIPPET ENGINE
+      --------------------------------------------------------------------------
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
       },
 
+      --------------------------------------------------------------------------
+      -- MINIMAL VS CODE-LIKE LOOK (NO BORDERS, NO DOC WINDOW)
+      --------------------------------------------------------------------------
       window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = {
+          border = "none",
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+        },
+        documentation = cmp.config.disable, -- ❌ no snippet box
       },
 
-      ------------------------------------------------------------------------
-      -- TAB NAVIGATION
-      ------------------------------------------------------------------------
+      --------------------------------------------------------------------------
+      -- VS CODE LIKE TAB BEHAVIOR
+      --------------------------------------------------------------------------
       mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
@@ -56,40 +63,40 @@ return {
           end
         end, { "i", "s" }),
 
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
+
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<C-Space>"] = cmp.mapping.complete(),
       }),
 
-      ------------------------------------------------------------------------
-      -- SOURCES (NOTICE: luasnip removed → no snippet popup)
-      ------------------------------------------------------------------------
+      --------------------------------------------------------------------------
+      -- SOURCES (NO SNIPPETS SHOWN)
+      --------------------------------------------------------------------------
       sources = cmp.config.sources({
         { name = "nvim_lsp", priority = 1000 },
-        { name = "buffer", priority = 500, keyword_length = 3 },
-        { name = "path", priority = 250 },
-        -- { name = "luasnip" }  -- ❌ removed so snippets do NOT show in popup
+        { name = "buffer",   priority = 500, keyword_length = 3 },
+        { name = "path",     priority = 250 },
+        -- ❌ snippets not shown in completion menu
+        -- { name = "luasnip" }
       }),
 
-      ------------------------------------------------------------------------
-      -- FORMATTING
-      ------------------------------------------------------------------------
+      --------------------------------------------------------------------------
+      -- SIMPLE VS CODE-LIKE MENU
+      --------------------------------------------------------------------------
       formatting = {
-        fields = { "kind", "abbr", "menu" },
+        fields = { "abbr", "menu" },
         format = function(entry, item)
           item.menu = ({
             nvim_lsp = "[LSP]",
-            buffer = "[Buf]",
-            path = "[Path]",
+            buffer   = "[BUF]",
+            path     = "[PATH]",
           })[entry.source.name]
           return item
         end,
       },
 
       experimental = {
-        ghost_text = true,
+        ghost_text = true, -- VS Code style ghost hint
       },
     })
 
