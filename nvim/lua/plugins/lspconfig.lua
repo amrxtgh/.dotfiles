@@ -210,15 +210,28 @@ return {
       -- ========================================================================
       -- SETUP ALL SERVERS
       -- ========================================================================
-      mason_lspconfig.setup_handlers({
-        -- Default handler for servers
-        function(server_name)
-          local config = server_configs[server_name] or {}
-          config.capabilities = capabilities
-          config.on_attach = on_attach
-          lspconfig[server_name].setup(config)
-        end,
-      })
+      
+      -- Get list of installed servers
+      local installed_servers = mason_lspconfig.get_installed_servers()
+      
+      -- Setup each installed server
+      for _, server_name in ipairs(installed_servers) do
+        local config = server_configs[server_name] or {}
+        config.capabilities = capabilities
+        config.on_attach = on_attach
+        lspconfig[server_name].setup(config)
+      end
+      
+      -- Alternative: Setup all servers in ensure_installed list
+      for _, server_name in ipairs({
+        "lua_ls", "vimls", "bashls", "html", "cssls", "ts_ls",
+        "jsonls", "clangd", "rust_analyzer", "pyright", "gopls"
+      }) do
+        local config = server_configs[server_name] or {}
+        config.capabilities = capabilities
+        config.on_attach = on_attach
+        lspconfig[server_name].setup(config)
+      end
       
       -- ========================================================================
       -- DIAGNOSTIC CONFIGURATION
