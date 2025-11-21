@@ -40,14 +40,11 @@ return {
     -- Load VSCode-style snippets from friendly-snippets
     require("luasnip.loaders.from_vscode").lazy_load()
     
-    -- Load custom Lua snippets from your snippets directory
-    local snippet_path = vim.fn.stdpath("config") .. "/snippets"
+    -- Load custom Lua snippets from lua/snippets directory (if it exists)
+    local snippet_path = vim.fn.stdpath("config") .. "/lua/snippets"
     if vim.fn.isdirectory(snippet_path) == 1 then
       require("luasnip.loaders.from_lua").lazy_load({ paths = snippet_path })
     end
-    
-    -- Optional: Load snippets from a specific path
-    -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my-snippets" } })
     
     -- ========================================================================
     -- SNIPPET NAVIGATION KEYMAPS
@@ -92,18 +89,20 @@ return {
     --]]
     
     -- ========================================================================
-    -- SNIPPET TYPES (for reference)
+    -- CUSTOM SNIPPETS LOCATION
     -- ========================================================================
-    -- You can create custom snippets in: ~/.config/nvim/snippets/
-    -- File structure:
-    --   snippets/
-    --   ├── all.lua       (snippets for all filetypes)
-    --   ├── lua.lua       (lua-specific snippets)
-    --   ├── python.lua    (python-specific snippets)
-    --   ├── javascript.lua
-    --   └── ...
+    -- Create custom snippets in: ~/.config/nvim/lua/snippets/
+    -- File structure (inside lua folder):
+    --   lua/
+    --   ├── plugins/
+    --   └── snippets/
+    --       ├── all.lua       (snippets for all filetypes)
+    --       ├── lua.lua       (lua-specific snippets)
+    --       ├── python.lua    (python-specific snippets)
+    --       ├── javascript.lua
+    --       └── ...
     
-    -- Example snippet format in snippets/lua.lua:
+    -- Example snippet format in lua/snippets/lua.lua:
     --[[
     local ls = require("luasnip")
     local s = ls.snippet

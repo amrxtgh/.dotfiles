@@ -34,6 +34,11 @@ vim.opt.timeoutlen = 800
 -- Completion
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
+-- Command-line completion
+vim.opt.wildmenu = true              -- Enhanced command-line completion
+vim.opt.wildmode = 'longest:full,full' -- Complete longest common string, then full
+vim.opt.wildoptions = 'pum'          -- Show completion in popup menu
+
 -- Clipboard
 vim.opt.clipboard = 'unnamedplus'
 
@@ -41,6 +46,13 @@ vim.opt.clipboard = 'unnamedplus'
 -- KEYMAPS
 -- ============================================================================
 vim.keymap.set('n', '<leader>t', ':term<CR>', { noremap = true, silent = true })
+
+-- Command-line history navigation with Up/Down arrows
+vim.keymap.set('c', '<Up>', '<C-p>', { noremap = true })
+vim.keymap.set('c', '<Down>', '<C-n>', { noremap = true })
+
+-- Alternative: Use Ctrl+p/n for command history (Vim default behavior)
+-- These work automatically without mapping
 
 -- ============================================================================
 -- LAZY.NVIM BOOTSTRAP

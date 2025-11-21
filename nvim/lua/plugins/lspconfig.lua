@@ -28,8 +28,9 @@ return {
     },
     config = function()
       local mason_lspconfig = require("mason-lspconfig")
-      local lspconfig = require("lspconfig")
-      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      
+      -- Check Neovim version for appropriate API
+      local nvim_0_11 = vim.fn.has('nvim-0.11') == 1
       
       -- ========================================================================
       -- MASON-LSPCONFIG SETUP
@@ -61,7 +62,7 @@ return {
       -- ========================================================================
       -- LSP CAPABILITIES (for completion)
       -- ========================================================================
-      local capabilities = cmp_nvim_lsp.default_capabilities()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       
       -- ========================================================================
       -- COMMON LSP ON_ATTACH (keymaps & options)
@@ -211,26 +212,53 @@ return {
       -- SETUP ALL SERVERS
       -- ========================================================================
       
-      -- Get list of installed servers
-      local installed_servers = mason_lspconfig.get_installed_servers()
-      
-      -- Setup each installed server
-      for _, server_name in ipairs(installed_servers) do
-        local config = server_configs[server_name] or {}
-        config.capabilities = capabilities
-        config.on_attach = on_attach
-        lspconfig[server_name].setup(config)
-      end
-      
-      -- Alternative: Setup all servers in ensure_installed list
-      for _, server_name in ipairs({
-        "lua_ls", "vimls", "bashls", "html", "cssls", "ts_ls",
-        "jsonls", "clangd", "rust_analyzer", "pyright", "gopls"
-      }) do
-        local config = server_configs[server_name] or {}
-        config.capabilities = capabilities
-        config.on_attach = on_attach
-        lspconfig[server_name].setup(config)
+      if nvim_0_11 then
+        -- Use new vim.lsp.config API for Neovim 0.11+
+        for server_name, config in pairs(server_configs) do
+          vim.lsp.config(server_name, vim.tbl_extend('force', {
+            capabilities = capabilities,
+            on_attach = on_attach,
+          }, config))
+        end
+        
+        -- Enable servers without custom config
+        for _, server_name in ipairs({
+          "vimls", "bashls", "html", "cssls", "jsonls"
+        }) do
+          if not server_configs[server_name] then
+            vim.lsp.config(server_name, {
+              capabilities = capabilities,
+              on_attach = on_attach,
+            })
+          end
+        end
+        
+        -- Enable all configured servers
+        vim.lsp.enable({
+          "lua_ls", "vimls", "pyright", "ts_ls", "html", "cssls",
+          "bashls", "jsonls", "clangd", "rust_analyzer", "gopls"
+        })
+      else
+        -- Use legacy lspconfig for older Neovim versions
+        local lspconfig = require("lspconfig")
+        
+        for server_name, config in pairs(server_configs) do
+          config.capabilities = capabilities
+          config.on_attach = on_attach
+          lspconfig[server_name].setup(config)
+        end
+        
+        -- Setup servers without custom config
+        for _, server_name in ipairs({
+          "vimls", "bashls", "html", "cssls", "jsonls"
+        }) do
+          if not server_configs[server_name] then
+            lspconfig[server_name].setup({
+              capabilities = capabilities,
+              on_attach = on_attach,
+            })
+          end
+        end
       end
       
       -- ========================================================================
