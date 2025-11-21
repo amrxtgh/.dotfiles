@@ -5,14 +5,21 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
-    "L3MON4D3/LuaSnip",
+    "hrsh7th/cmp-cmdline",
     "saadparwaiz1/cmp_luasnip",
+    "L3MON4D3/LuaSnip",
+    "rafamadriz/friendly-snippets",
   },
 
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
 
+    require("luasnip.loaders.from_vscode").lazy_load()
+
+    --------------------------------------------------------------------------
+    -- CORE SETUP
+    --------------------------------------------------------------------------
     cmp.setup({
       snippet = {
         expand = function(args)
@@ -21,68 +28,85 @@ return {
       },
 
       window = {
-        completion = {
-          border = "none",
-          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-        },
-        documentation = cmp.config.disable,
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
       },
 
+      ------------------------------------------------------------------------
+      -- TAB NAVIGATION
+      ------------------------------------------------------------------------
       mapping = cmp.mapping.preset.insert({
-        ["<Up>"] = cmp.mapping.select_prev_item(),
-        ["<Down>"] = cmp.mapping.select_next_item(),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then cmp.select_next_item()
-          else fallback() end
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          else
+            fallback()
+          end
         end, { "i", "s" }),
 
         ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then cmp.select_prev_item()
-          else fallback() end
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
         end, { "i", "s" }),
 
-        ["<CR>"] = cmp.mapping.confirm({
-          select = true,
-          behavior = cmp.ConfirmBehavior.Replace,
-        }),
-
-        ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
       }),
 
+      ------------------------------------------------------------------------
+      -- SOURCES (NOTICE: luasnip removed → no snippet popup)
+      ------------------------------------------------------------------------
       sources = cmp.config.sources({
         { name = "nvim_lsp", priority = 1000 },
-        { name = "luasnip", priority = 750 },
-        { name = "buffer", priority = 500 },
+        { name = "buffer", priority = 500, keyword_length = 3 },
         { name = "path", priority = 250 },
+        -- { name = "luasnip" }  -- ❌ removed so snippets do NOT show in popup
       }),
 
+      ------------------------------------------------------------------------
+      -- FORMATTING
+      ------------------------------------------------------------------------
       formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, item)
           item.menu = ({
             nvim_lsp = "[LSP]",
-            luasnip = "[Snip]",
-            buffer   = "[Buf]",
-            path     = "[Path]",
+            buffer = "[Buf]",
+            path = "[Path]",
           })[entry.source.name]
           return item
         end,
       },
 
-      completion = {
-        completeopt = "menu,menuone,noinsert",
-      },
-
       experimental = {
-        ghost_text = false,
+        ghost_text = true,
       },
+    })
+
+    --------------------------------------------------------------------------
+    -- CMDLINE COMPLETION
+    --------------------------------------------------------------------------
+    cmp.setup.cmdline(":", {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = "path" },
+        { name = "cmdline", keyword_length = 2 },
+      },
+    })
+
+    cmp.setup.cmdline({ "/", "?" }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = { { name = "buffer" } },
     })
   end,
 }
