@@ -28,17 +28,14 @@ return {
       },
       
       -- ======================================================================
-      -- COMPLETION WINDOW (Minimal - No Borders)
+      -- COMPLETION WINDOW (Minimal - No Borders, No Documentation Box)
       -- ======================================================================
       window = {
         completion = {
           border = "none",
           winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
         },
-        documentation = {
-          border = "none",
-          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-        },
+        documentation = cmp.config.disable, -- Disable documentation box
       },
       
       -- ======================================================================
