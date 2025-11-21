@@ -1,7 +1,7 @@
 -- ============================================================================
 -- NVIM-CMP CONFIGURATION
 -- ============================================================================
--- Minimal autocompletion setup with Tab/Enter confirmation
+-- Minimal autocompletion setup with arrow key navigation
 
 return {
   "hrsh7th/nvim-cmp",
@@ -28,21 +28,44 @@ return {
       },
       
       -- ======================================================================
-      -- COMPLETION WINDOW
+      -- COMPLETION WINDOW (Minimal - No Borders)
       -- ======================================================================
       window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = {
+          border = "none",
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+        },
+        documentation = {
+          border = "none",
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+        },
       },
       
       -- ======================================================================
       -- KEY MAPPINGS
       -- ======================================================================
       mapping = cmp.mapping.preset.insert({
-        -- Tab: Confirm selection (or insert tab if menu not visible)
+        -- Navigate menu items with Up/Down arrows
+        ["<Up>"] = cmp.mapping.select_prev_item(),
+        ["<Down>"] = cmp.mapping.select_next_item(),
+        
+        -- Alternative navigation with Ctrl+j/k
+        ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        
+        -- Tab: Move to next item (don't auto-confirm)
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })
+            cmp.select_next_item()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        
+        -- Shift-Tab: Move to previous item
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
           else
             fallback()
           end
@@ -53,12 +76,6 @@ return {
           select = true,
           behavior = cmp.ConfirmBehavior.Replace,
         }),
-        
-        -- Navigate menu items
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<Down>"] = cmp.mapping.select_next_item(),
-        ["<Up>"] = cmp.mapping.select_prev_item(),
         
         -- Scroll documentation
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
