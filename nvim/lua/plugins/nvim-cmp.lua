@@ -1,120 +1,128 @@
+-- ============================================================================
+-- NVIM-CMP CONFIGURATION
+-- ============================================================================
+-- Minimal autocompletion setup with arrow key navigation
+
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
-
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
-    "rafamadriz/friendly-snippets",
+    "hrsh7th/cmp-nvim-lsp",     -- LSP completion source
+    "hrsh7th/cmp-buffer",       -- Buffer words source
+    "hrsh7th/cmp-path",         -- File path source
+    "L3MON4D3/LuaSnip",         -- Snippet engine
+    "saadparwaiz1/cmp_luasnip", -- Snippet source
   },
-
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
-
-    require("luasnip.loaders.from_vscode").lazy_load()
-
+    
     cmp.setup({
-      --------------------------------------------------------------------------
+      -- ======================================================================
       -- SNIPPET ENGINE
-      --------------------------------------------------------------------------
+      -- ======================================================================
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
       },
-
-      --------------------------------------------------------------------------
-      -- MINIMAL VS CODE-LIKE LOOK (NO BORDERS, NO DOC WINDOW)
-      --------------------------------------------------------------------------
+      
+      -- ======================================================================
+      -- COMPLETION WINDOW (Minimal - No Borders, No Documentation Box)
+      -- ======================================================================
       window = {
         completion = {
           border = "none",
           winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
         },
-        documentation = cmp.config.disable, -- ❌ no snippet box
+        documentation = cmp.config.disable, -- Disable documentation box
       },
-
-      --------------------------------------------------------------------------
-      -- VS CODE LIKE TAB BEHAVIOR
-      --------------------------------------------------------------------------
+      
+      -- ======================================================================
+      -- KEY MAPPINGS
+      -- ======================================================================
       mapping = cmp.mapping.preset.insert({
+        -- Navigate menu items with Up/Down arrows
+        ["<Up>"] = cmp.mapping.select_prev_item(),
+        ["<Down>"] = cmp.mapping.select_next_item(),
+        
+        -- Tab: Confirm selection and insert
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
+            cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })
           else
             fallback()
           end
         end, { "i", "s" }),
-
+        
+        -- Shift-Tab: Move to previous item
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
           else
             fallback()
           end
         end, { "i", "s" }),
-
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-
-        ["<C-e>"] = cmp.mapping.abort(),
+        
+        -- Enter: Also confirms selection
+        ["<CR>"] = cmp.mapping.confirm({
+          select = true,
+          behavior = cmp.ConfirmBehavior.Replace,
+        }),
+        
+        -- Alternative navigation with Ctrl+j/k
+        ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        
+        -- Scroll documentation (if enabled)
+        ["<C-d>"] = cmp.mapping.scroll_docs(4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+        
+        -- Trigger completion manually
         ["<C-Space>"] = cmp.mapping.complete(),
+        
+        -- Close completion menu
+        ["<C-e>"] = cmp.mapping.abort(),
       }),
-
-      --------------------------------------------------------------------------
-      -- SOURCES (NO SNIPPETS SHOWN)
-      --------------------------------------------------------------------------
+      
+      -- ======================================================================
+      -- COMPLETION SOURCES
+      -- ======================================================================
       sources = cmp.config.sources({
-        { name = "nvim_lsp", priority = 1000 },
-        { name = "buffer",   priority = 500, keyword_length = 3 },
-        { name = "path",     priority = 250 },
-        -- ❌ snippets not shown in completion menu
-        -- { name = "luasnip" }
+        { name = "nvim_lsp", priority = 1000, keyword_length = 1 },
+        { name = "luasnip", priority = 750 },
+        { name = "buffer", priority = 500, keyword_length = 3 },
+        { name = "path", priority = 250 },
       }),
-
-      --------------------------------------------------------------------------
-      -- SIMPLE VS CODE-LIKE MENU
-      --------------------------------------------------------------------------
+      
+      -- ======================================================================
+      -- FORMATTING
+      -- ======================================================================
       formatting = {
-        fields = { "abbr", "menu" },
-        format = function(entry, item)
-          item.menu = ({
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+          -- Source labels
+          vim_item.menu = ({
             nvim_lsp = "[LSP]",
-            buffer   = "[BUF]",
-            path     = "[PATH]",
+            luasnip = "[Snip]",
+            buffer = "[Buf]",
+            path = "[Path]",
           })[entry.source.name]
-          return item
+          
+          return vim_item
         end,
       },
-
+      
+      -- ======================================================================
+      -- BEHAVIOR
+      -- ======================================================================
+      completion = {
+        completeopt = "menu,menuone,noinsert",
+      },
+      
       experimental = {
-        ghost_text = true, -- VS Code style ghost hint
+        ghost_text = false, -- Disable for minimal look
       },
-    })
-
-    --------------------------------------------------------------------------
-    -- CMDLINE COMPLETION
-    --------------------------------------------------------------------------
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = "path" },
-        { name = "cmdline", keyword_length = 2 },
-      },
-    })
-
-    cmp.setup.cmdline({ "/", "?" }, {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = { { name = "buffer" } },
     })
   end,
 }
-
