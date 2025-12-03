@@ -77,7 +77,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-
 -- ============================================================================
 -- PLUGIN CONFIGURATION
 -- ============================================================================
@@ -86,3 +85,5 @@ require("lazy").setup({
     { import = "plugins" },
   },
 })
+
+vim.cmd.colorscheme("tokyonight-night")
