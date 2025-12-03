@@ -213,7 +213,7 @@ return {
 -- ============================================================================
 -- QUICK SWITCH KEYMAP (Optional)
 -- ============================================================================
--- Add to init.lua for quick theme switching with <leader>th:
+-- for quick theming add this to init.lua for quick theme switching with <leader>th:
 --
 -- vim.keymap.set('n', '<leader>th', function()
 --   vim.ui.select(
