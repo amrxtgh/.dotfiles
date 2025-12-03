@@ -74,6 +74,8 @@ plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
+  history-substring-search
+  autojump
   )
 # Reset exit code to 0 on Ctrl+C
 source $ZSH/oh-my-zsh.sh
@@ -83,6 +85,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+setopt sharehistory
 
 
 # Custom prompt: username@hostname, last 3 path components, Git branch
@@ -110,14 +113,12 @@ PROMPT='%F{green}%~%f ${vcs_info_msg_0_} %F{yellow}»%f '
 TRAPINT() { return 0 }
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/ 
-source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/ 
-
+DISABLE_AUTO_UPDATE="true"
 
 #for optimal performance
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
