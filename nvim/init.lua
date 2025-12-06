@@ -1,11 +1,5 @@
--- ============================================================================
--- LEADER KEY (must be set before lazy)
--- ============================================================================
 vim.g.mapleader = " "
 
--- ============================================================================
--- GENERAL SETTINGS
--- ============================================================================
 
 -- Line Numbers
 vim.opt.number = true
@@ -22,7 +16,6 @@ vim.opt.softtabstop = 2
 vim.opt.shiftround = true
 vim.opt.smarttab = true
 
--- UI & Appearance
 vim.opt.fillchars:append({ eob = ' ' })
 vim.opt.termguicolors = true
 vim.opt.list = false
@@ -77,13 +70,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
--- ============================================================================
--- PLUGIN CONFIGURATION
--- ============================================================================
 require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
 })
 
-vim.cmd.colorscheme("tokyonight-night")
+--vim.cmd.colorscheme("")
