@@ -1,4 +1,4 @@
-clone the repo and runthis command 
+clone the repo and run this command 
 1. chmod +x ~/nvchad/setup/script.sh
 2. setup/script.sh
 
