@@ -177,7 +177,6 @@ xxx() {
     git commit -m "$msg"
     git push -u origin main
 }
-alias app='rofi -show drun'
 #alias xxx="git add . && git commit -m "update" && git push"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
