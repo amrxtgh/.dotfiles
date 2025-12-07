@@ -2,7 +2,7 @@
 sudo pacman -Syu --noconfirm ripgrep fzf neovim git ttf-cascadia-mono-nerd nodejs npm python python-pip curl go rustup wmctrl yay
 
 rm -rf ~/.gitconfig
-rm -rf ~/.config/nvim
+#rm -rf ~/.config/nvim
 rm -rf ~/.ssh/id_rsa_github
 rm -rf ~/.ssh/config
 rm -rf ~/.config/alacritty/alacritty.toml
@@ -12,7 +12,7 @@ mkdir -p ~/.ssh
 mkdir -p ~/.config/alacritty
 
 cp -r ~/.dotfiles/git/.gitconfig ~/.gitconfig
-cp -r ~/.dotfiles/nvim/ ~/.config/nvim/
+# cp -r ~/.dotfiles/nvim/ ~/.config/nvim/
 cp -r ~/.dotfiles/ssh/config ~/.ssh/config
 cp -r ~/.dotfiles/ssh/id_rsa_github ~/.ssh/id_rsa_github
 cp -r ~/.dotfiles/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
