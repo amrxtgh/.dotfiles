@@ -29,7 +29,7 @@ unfocused_hollow = true
 
 [[keyboard.bindings]]
 key = "T"
-mods = "Control|Alt"
+mods = "Control"
 action = "SpawnNewInstance"
 
 [mouse]
