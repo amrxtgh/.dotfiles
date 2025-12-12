@@ -150,6 +150,7 @@ alias q="clear"
 alias off="poweroff"
 alias e="exit"
 alias ff="fastfetch"
+alias rm='rm -i'
 
 #git aliases
 alias gst="git status"
