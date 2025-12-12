@@ -149,6 +149,7 @@ alias n="nvim"
 alias q="clear"
 alias off="poweroff"
 alias e="exit"
+alias ff="fastfetch"
 
 #git aliases
 alias gst="git status"
