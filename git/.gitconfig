@@ -3,5 +3,5 @@
 	email = ghimireamrit619@gmail.com
 [credential]
   help = store
-git config --global core.editor "nvim"
-
+[core]
+  editor = nvim
