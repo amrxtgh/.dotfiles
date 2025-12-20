@@ -5,7 +5,7 @@ program = "/usr/bin/zsh"
 args = ["--login"]
 
 [window]
-opacity = 0.9
+opacity = 0.8
 blur = true
 dynamic_title = true
 startup_mode = "Windowed"
