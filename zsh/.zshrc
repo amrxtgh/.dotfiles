@@ -151,7 +151,7 @@ alias off="poweroff"
 alias e="exit"
 alias ff="fastfetch"
 alias rm='rm -i'
-alias ocd='ollama run deepseek-r1:1.5b'
+alias or='ollama run deepseek-r1:1.5b'
 
 #git aliases
 alias gst="git status"
