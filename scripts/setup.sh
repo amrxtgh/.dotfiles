@@ -3,6 +3,7 @@ sudo pacman -Syu --noconfirm ripgrep fzf neovim git ttf-cascadia-mono-nerd nodej
 
 rm -rf ~/.gitconfig
 #rm -rf ~/.config/nvim
+rm -rf ~/.config/kitty
 rm -rf ~/.ssh/id_rsa_github
 rm -rf ~/.ssh/config
 rm -rf ~/.config/alacritty/alacritty.toml
@@ -10,14 +11,18 @@ rm -rf ~/.config/alacritty/alacritty.toml
 mkdir -p ~/.config
 mkdir -p ~/.ssh
 mkdir -p ~/.config/alacritty
+mkdir -p ~/.config/kitty
 
 cp -r ~/.dotfiles/git/.gitconfig ~/.gitconfig
 # cp -r ~/.dotfiles/nvim/ ~/.config/nvim/
 cp -r ~/.dotfiles/ssh/config ~/.ssh/config
 cp -r ~/.dotfiles/ssh/id_rsa_github ~/.ssh/id_rsa_github
-cp -r ~/.dotfiles/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+cp -r ~/.dotfiles/alacritty ~/.config/alacritty
+cp -r ~/.dotfiles/kitty ~/.config/kitty
 cp -r ~/.dotfiles/zsh/.zshrc ~/.zshrc
+
 chmod 600 ~/.ssh/id_rsa_github
+chmod 700 ~/.ssh
 dconf load / < ~/.dotfiles/gnome/dconf.ini
 echo "Gnome keybindings applied! restart gnome shell ctrl+f2 -> r -> enter"
 source ~/.zshrc
