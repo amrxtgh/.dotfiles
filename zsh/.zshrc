@@ -184,3 +184,12 @@ xxx() {
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# oneAPI environment
+source /opt/intel/oneapi/setvars.sh >/dev/null 2>&1
+
+# Force SYCL to use Intel Xe GPU
+export SYCL_DEVICE_FILTER=level_zero:gpu
+export ONEAPI_DEVICE_SELECTOR=level_zero:gpu
+# opencode
+export PATH=/home/amrxtgh/.opencode/bin:$PATH
