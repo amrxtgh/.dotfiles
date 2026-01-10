@@ -67,4 +67,4 @@ if [ -f ~/.zshrc ]; then
     source ~/.zshrc
 fi
 
-echo "✓ All configurations applied successfully!"
+echo "All configurations applied successfully!"
