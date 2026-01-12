@@ -4,7 +4,7 @@ echo "Starting dotfiles setup..."
 
 # Update and install packages
 echo "Installing packages..."
-sudo pacman -Syu --noconfirm ripgrep fzf neovim git ttf-cascadia-mono-nerd nodejs npm python python-pip curl go rustup wmctrl
+sudo pacman -Syu --noconfirm ripgrep fzf neovim git ttf-cascadia-mono-nerd nodejs npm python python-pip curl go rustup wmctrl zoxide
 
 # Install yay if not present
 if ! command -v yay &> /dev/null; then
