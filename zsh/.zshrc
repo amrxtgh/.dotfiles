@@ -75,7 +75,6 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   history-substring-search
-  autojump
   )
 # Reset exit code to 0 on Ctrl+C
 source $ZSH/oh-my-zsh.sh
@@ -193,3 +192,6 @@ export SYCL_DEVICE_FILTER=level_zero:gpu
 export ONEAPI_DEVICE_SELECTOR=level_zero:gpu
 # opencode
 export PATH=/home/amrxtgh/.opencode/bin:$PATH
+
+
+eval "$(zoxide init zsh)"
