@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="cypher"
+#ZSH_THEME="cypher"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -107,7 +107,7 @@ zstyle ':vcs_info:git:*' formats '%F{blue}git:%f%F{red}(%b)%f'
 zstyle ':vcs_info:*' enable git
 
 #PROMPT='%F{green}%~%f ${vcs_info_msg_0_} %F{yellow}»%f '
-PROMPT='%F{green}%~%f ${vcs_info_msg_0_} %F{yellow}➜%f $ '
+#PROMPT='%F{green}%~%f ${vcs_info_msg_0_} %F{yellow}➜%f $ '
 
 
 # Optional: reset exit code on Ctrl+C
@@ -195,3 +195,6 @@ export PATH=/home/amrxtgh/.opencode/bin:$PATH
 
 
 eval "$(zoxide init zsh)"
+# ~/.zshrc
+
+eval "$(starship init zsh)"
