@@ -106,7 +106,7 @@ precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%F{blue}git:%f%F{red}(%b)%f'
 zstyle ':vcs_info:*' enable git
 
-PROMPT='%F{green}%~%f ${vcs_info_msg_0_} %F{yellow}❯%f '
+PROMPT='%F{green}%~%f ${vcs_info_msg_0_} %F{yellow}❯ %f'
 #PROMPT='%F{green}%~%f ${vcs_info_msg_0_} %F{yellow}➜%f $ '
 
 
