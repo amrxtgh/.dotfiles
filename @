@@ -36,6 +36,7 @@ click_interval -1.0
 focus_follows_mouse no
 
 # Terminal
+term xterm-256color
 strip_trailing_spaces smart
 copy_on_select clipboard
 select_by_word_characters @-./_~?&=%+#
@@ -57,7 +58,8 @@ tab_bar_align left
 tab_bar_margin_width 4
 tab_bar_margin_height 5 2
 tab_bar_style fade
-tab_separator " | "
+tab_powerline_style slanted
+tab_separator "   "
 tab_title_template " {fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{index}:  {title[title.rfind('/')+1:]} "
 tab_bar_min_tabs 1
 active_tab_font_style bold
