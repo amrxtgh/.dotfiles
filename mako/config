@@ -1,0 +1,36 @@
+# =========================
+# MAKO CONFIG (COMPATIBLE)
+# =========================
+
+layer=top
+anchor=top-center
+
+width=380
+height=100
+margin=12
+padding=12
+
+background-color=#1e1e2eee
+text-color=#cdd6f4
+
+border-size=2
+border-color=#74c7ec
+border-radius=8
+
+font=Adwaita Sans 12
+default-timeout=5000
+
+icons=1
+max-icon-size=32
+
+[urgency=high]
+layer=overlay
+border-color=#f38ba8
+
+[desktop-entry=discord]
+border-color=#74c7ec
+
+[mode=dnd]
+invisible=1
+
+

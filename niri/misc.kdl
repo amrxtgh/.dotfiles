@@ -4,6 +4,9 @@
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
+spawn-at-startup "hyprlock"
+spawn-at-startup "mako"
+spawn-at-startup "hypridle"
 spawn-at-startup "waybar"
 spawn-at-startup "swaybg" "-i" "/home/amrxtgh/Downloads/pics/wallpaper.jpg" "-m" "fill"
 
@@ -29,3 +32,4 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
+
