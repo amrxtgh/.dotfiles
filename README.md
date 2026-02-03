@@ -7,8 +7,7 @@ Personal configuration files for my Linux setup.
 ### Window Managers & Desktop
 ```bash
 # Install one of these compositors:
-sudo pacman -S hyprland hyprlock    # Hyprland with lock screen
-# OR
+sudo pacman -S hyprlock    # Hyprland with lock screen
 sudo pacman -S niri                 # Niri scrollable-tiling compositor
 
 # Status bar and launcher
