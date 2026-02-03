@@ -1,7 +1,7 @@
 {
     "closeOnFocusLoss": false,
     "considerPreedit": false,
-    "faviconService": "twenty",
+    "faviconService": "google",
     "font": {
         "size": 10.5
     },
@@ -10,10 +10,10 @@
     },
     "popToRootOnClose": true,
     "rootSearch": {
-        "searchFiles": false
+        "searchFiles": true
     },
     "theme": {
-        "name": "tokyo-night"
+        "name": "vicinae-dark"
     },
     "window": {
         "csd": true,
