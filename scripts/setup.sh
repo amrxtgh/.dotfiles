@@ -63,13 +63,6 @@ if [ -f ~/.ssh/id_rsa_github ]; then
     chmod 700 ~/.ssh
 fi
 
-# Apply Gnome settings
-if [ -f ~/.dotfiles/gnome/dconf.ini ]; then
-    echo "Applying Gnome settings..."
-    dconf load / < ~/.dotfiles/gnome/dconf.ini
-    echo "Gnome keybindings applied! Restart gnome shell: Alt+F2 -> type 'r' -> Enter"
-fi
-
 # Migrate Alacritty config
 if command -v alacritty &> /dev/null; then
     echo "Migrating Alacritty config..."
