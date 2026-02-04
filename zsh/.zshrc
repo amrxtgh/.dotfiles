@@ -144,7 +144,8 @@ export ARCHFLAGS="-arch $(uname -m)"
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
-alias n="neovide"
+alias neovide='pkill -f neovide; GDK_BACKEND=x11 setsid neovide >/dev/null 2>&1 &'
+alias n="nvim"
 alias q="clear"
 alias off="poweroff"
 alias e="exit"
