@@ -1,186 +1,227 @@
 @import "mocha.css";
 
 @define-color text_color @text;
-
-/* uncomment it for use pywal script*/
-/*
-@import "/home/divan/.cache/wal/waybar.css";
-@define-color text_color @maxY;
-*/
-
+@define-color bar_bg rgba(17, 17, 27, 0.82);
+@define-color module_bg rgba(49, 50, 68, 0.85);
+@define-color module_bg_alt rgba(69, 71, 90, 0.85);
+@define-color module_border rgba(147, 153, 178, 0.25);
+@define-color accent @mauve;
+@define-color accent_2 @teal;
+@define-color danger @red;
 
 * {
 	border: none;
 	border-radius: 0;
-	font-family: "Noto Nerd Font";
-	font-size: 17px;
-	min-height: 1em;
+	font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+	font-size: 12px;
+	min-height: 0;
+	padding: 0;
+	margin: 0;
 }
 
 window#waybar {
-	background: @surface0;
+	background: transparent;
 	color: @text_color;
 }
 
-#window {
-	font-weight: bold;
-	font-family: "Noto";
+.modules-left,
+.modules-center,
+.modules-right {
+	background: @bar_bg;
+	border: 1px solid @module_border;
+	border-radius: 12px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+	padding: 3px 6px;
 }
 
 .modules-left {
-	background: @base;
-	border-radius: 0.5em;
-	margin-left: -0.5em;
-	padding: 0 0.5em;
+	margin-left: 8px;
 }
 
 .modules-right {
-	background: @base;
-	border-radius: 0.5em;
-	margin-right: -0.5em;
-	padding: 0 0.5em;
+	margin-right: 8px;
 }
 
 .modules-center {
-	background: @base;
-	border-radius: 0.5em;
-	margin-right: 0.25em;
-	margin-left: 0.25em;
-	padding: 0 0.5em;
+	margin: 0 8px;
 }
 
-#power {
-	background: @surface0;
-	border-radius: 0.5em;
-	margin-left: 0.15em;
-	padding-right: 0.5em;
-	margin-right: -0.5em;
-	color: @red;
+#workspaces {
+	padding: 0 2px;
 }
 
-#custom-reboot {
-	color: @flamingo
-}
-
-#custom-exit {
-	color: @peach
-}
-
-
-#custom-lock {
-	color: @flamingo
+#custom-logo {
+	color: @accent;
+	font-size: 16px;
+	padding: 0 6px 0 2px;
+	margin-right: 2px;
 }
 
 #workspaces button {
-	padding: 0 0.25em;
+	padding: 2px 5px;
+	margin: 1px 2px;
 	background: transparent;
-	color: @text_color;
-	border-top: 2px solid @surface0;
+	color: @subtext0;
+	border-radius: 6px;
+	border: 0;
+	font-weight: 600;
+	letter-spacing: 0.1px;
+	transition: all 140ms ease-out;
 }
 
-#workspaces button.focused {
-	color: @text_color;
-	border-top: 2px solid @text_color;
-}
-
-#workspaces button.active {
+#workspaces button:hover {
+	background: @module_bg_alt;
 	color: @text;
-	border-top: 2px solid @text;
+	/* GTK CSS doesn't support transform; use margin tweak instead */
+	margin-top: -1px;
+	margin-bottom: 1px;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+	background: @module_bg_alt;
+	color: @text;
+	box-shadow: inset 0 -2px 0 0 @accent;
 }
 
 #workspaces button.urgent {
-	border-color: @red;
-	color: @red;
-	border-top: 2px solid @red;
+	background: rgba(243, 139, 168, 0.15);
+	color: @danger;
+	box-shadow: inset 0 -2px 0 0 @danger;
 }
 
 #clock {
-	padding: 0 0.5em;
-	margin: 0 0.15em;
-	background: @surface0;
-	border-radius: 0.5em;
-	font-weight: bold;
+	background: @module_bg;
+	border: 1px solid @module_border;
+	border-radius: 10px;
+	padding: 2px 8px;
+	font-weight: 600;
+	letter-spacing: 0.3px;
 }
 
-#pulseaudio.mic{
-	color: @text_color;
-	margin-left: 0.3em;
-	margin-right: -0.3em;
-}
-#pulseaudio.mic.source-muted{
-	color: @red;
-	margin-left: 0em;
-	margin-right: 0em;
+#tooltip {
+	padding: 8px 10px;
+	font-size: 13px;
 }
 
-#language, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
-	padding: 0 0.15em;
-	margin: 0 0.15em;
+#language,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#pulseaudio.mic,
+#custom-spotify,
+#tray,
+#mode {
+	background: @module_bg;
+	border: 1px solid @module_border;
+	border-radius: 10px;
+	padding: 2px 6px;
+	margin: 0 3px;
 }
 
-#battery {
+#pulseaudio.mic {
+	margin-left: 4px;
+	margin-right: 2px;
+	color: @accent_2;
+}
+
+#pulseaudio,
+#pulseaudio.mic {
+	font-size: 11px;
+	padding: 2px 5px;
+}
+
+#cpu {
+	font-size: 11px;
+	padding: 2px 4px;
+	margin-right: 1px;
+}
+
+#pulseaudio.mic.source-muted {
+	color: @danger;
+}
+
+#network.disconnected {
+	color: @danger;
 }
 
 #battery icon {
-	color: @red;
-}
-
-@keyframes critical {
-	to {
-		color: @red;
-	}
-}
-@keyframes good {
-	to {
-		color: @blue;
-	}
+	color: @accent;
 }
 
 #battery.charging {
 	color: @text_color;
-	animation-name: good;
-	animation-duration: 3.5s;
+	animation-name: battery_charge;
+	animation-duration: 3s;
 	animation-timing-function: ease-out;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 }
 
-#battery.warning:not(.charging) {
-	color: @text_color;
-	animation-name: critical;
-	animation-duration: 1.5s;
-	animation-timing-function: ease-out;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-}
+#battery.warning:not(.charging),
 #battery.critical:not(.charging) {
-	color: @text_color;
-	animation-name: critical;
-	animation-duration: 0.5s;
-	animation-timing-function: linear;
+	color: @danger;
+	animation-name: battery_warn;
+	animation-duration: 1.3s;
+	animation-timing-function: ease-out;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 }
 
-#cpu {
+@keyframes battery_charge {
+	to {
+		color: @accent_2;
+	}
 }
 
-#memory {
+@keyframes battery_warn {
+	to {
+		color: @danger;
+	}
 }
 
-#network {
+#group-power {
+	background: @module_bg;
+	border: 1px solid @module_border;
+	border-radius: 12px;
+	padding: 3px 5px;
+	margin-left: 4px;
 }
 
-#network.disconnected {
-	color: @red;
+#custom-power,
+#custom-lock,
+#custom-exit,
+#custom-reboot {
+	padding: 0 6px;
+	border-radius: 8px;
+	transition: background 120ms ease-out, color 120ms ease-out;
 }
 
-#pulseaudio {
+#custom-power {
+	color: @danger;
 }
 
-#pulseaudio.muted {
+#custom-lock {
+	color: @flamingo;
+}
+
+#custom-exit {
+	color: @peach;
+}
+
+#custom-reboot {
+	color: @flamingo;
+}
+
+#custom-power:hover,
+#custom-lock:hover,
+#custom-exit:hover,
+#custom-reboot:hover {
+	background: @module_bg_alt;
 }
 
 #tray {
+	padding: 1px 5px;
 }
-
