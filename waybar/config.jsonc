@@ -58,14 +58,9 @@
 		"interval": 2
 	},
 	"memory": {
-		"format": "{}%  ",
-		"interval": 5,
-		"on-click": "niri msg action spawn -- btm"
-	},
-	"memory": {
 		"format": "{}%  ",
 		"interval": 5,
-		"on-click": "hyprctl dispatch exec \"[float] foot -W 80x24 btm\""
+		"on-click": "niri msg action spawn -- foot -W 80x24 btm"
 	},
 	"battery": {
 		"interval": 5,
@@ -87,7 +82,7 @@
 		"format-ethernet": "{ifname}  ",
 		"format-disconnected": "Disconnected ⚠ ",
 		"tooltip-format": "{ipaddr}/{cidr}",
-		"on-click": "hyprctl dispatch exec \"[float] foot -W 160x48 bash -c 'source ~/.config/waybar/scripts/bashrc; nmtui'\""
+		"on-click": "niri msg action spawn -- foot -W 160x48 bash -c 'source ~/.config/waybar/scripts/bashrc; nmtui'"
 	},
 	"pulseaudio": {
 		"interval": 1,
