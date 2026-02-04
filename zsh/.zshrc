@@ -144,7 +144,7 @@ export ARCHFLAGS="-arch $(uname -m)"
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
-alias n="nvim"
+alias n="neovide"
 alias q="clear"
 alias off="poweroff"
 alias e="exit"
@@ -193,6 +193,6 @@ export ONEAPI_DEVICE_SELECTOR=level_zero:gpu
 # opencode
 export PATH=/home/amrxtgh/.opencode/bin:$PATH
 
-
+export PATH="$HOME/.npm-global/bin:$PATH"
 eval "$(zoxide init zsh)"
 
