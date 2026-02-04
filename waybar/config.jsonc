@@ -5,7 +5,7 @@
 	// Bar height is based on the css font size. Don't forget to change the tray icon size!
 	// "width": 1366, // Waybar width
 	// Choose the order of the modules
-	"modules-left": ["niri/workspaces"],
+	"modules-left": ["custom/logo", "niri/workspaces"],
 	"modules-center": ["clock"],
 	"modules-right": ["pulseaudio#mic", "pulseaudio", "network", "cpu", "memory", "battery", "group/power"],
 
@@ -15,11 +15,15 @@
 		"format-ru": "Ru",
 	},
 	"niri/workspaces": {
-		"disable-scroll": true,
+		"disable-scroll": false,
 		"all-outputs": false,
 		"active-only": false,
 		"show-special": false,
-		"format": "{name}"
+		"format": "{index}"
+	},
+	"custom/logo": {
+		"format": "  ",
+		"tooltip": false
 	},
 	"niri/window": {
 	    "format": "{}",
@@ -40,18 +44,23 @@
 							"weeks-pos"     : "right",
 							"on-scroll"     : 1,
 							"format": {
-									  "months":     "<span color='#ffead3'><b>{}</b></span>",
-									  "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-									  "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-									  "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-									  "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+									  "months":     "<span color='#b9fbc0'><b>{}</b></span>",
+									  "days":       "<span color='#e6ffe9'>{}</span>",
+									  "weeks":      "<span color='#7fe39a'>W{}</span>",
+									  "weekdays":   "<span color='#c9ffd6'><b>{}</b></span>",
+									  "today":      "<span color='#24ff72'><b><u>{}</u></b></span>"
 					}
 		}
 	},
 	"cpu": {
-		"format": "{usage}%  ",
+		"format": "{usage}% {icon}",
+		"format-icons": "",
+		"interval": 2
+	},
+	"memory": {
+		"format": "{}%  ",
 		"interval": 5,
-		"on-click": "hyprctl dispatch exec \"[float] foot -W 80x24 btm\""
+		"on-click": "niri msg action spawn -- btm"
 	},
 	"memory": {
 		"format": "{}%  ",
@@ -65,6 +74,7 @@
 			"warning": 30,
 			"critical": 15
 		},
+		"format-charging": "{capacity}%  ",
 		"format": "{capacity}% {icon}",
 		// "format-good": "", // An empty format will hide the module
 		// "format-full": "",
@@ -80,8 +90,10 @@
 		"on-click": "hyprctl dispatch exec \"[float] foot -W 160x48 bash -c 'source ~/.config/waybar/scripts/bashrc; nmtui'\""
 	},
 	"pulseaudio": {
+		"interval": 1,
 		"scroll-step": 1,
 		"format": "{volume}% {icon} ",
+		"tooltip-format": "{desc} ({volume}%)",
 		"format-bluetooth": "{volume}% {icon} ",
 		"format-muted": " ",
 		"format-icons": {
@@ -93,15 +105,20 @@
 			"car": " ",
 			"default": [" ", " "]
 		},
-		"on-click": "pavucontrol"
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click-right": "pavucontrol",
+		"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+		"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%"
 	},
 
 	"pulseaudio#mic": {
+			"interval": 1,
 			"scroll-step": 0,
 			"format": "{format_source}",
 			"format-source": " ",
 			"format-source-muted": " ",
-			"on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+			"tooltip-format": "{desc}",
+			"on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 		},
 
 	"group/power": {
@@ -121,7 +138,7 @@
 	"custom/exit": {
 		"format": " 󰗼 ",
 		"tooltip": false,
-		"on-click": "bash ~/.config/waybar/scripts/confirm.sh \"hyprctl dispatch exit\""
+		"on-click": "bash ~/.config/waybar/scripts/confirm.sh \"niri msg action quit\""
 	},
 	"custom/lock": {
 		"format": " 󰍁 ",
@@ -139,4 +156,3 @@
 		"on-click": "bash ~/.config/waybar/scripts/confirm.sh \"shutdown now\""
 	}
 }
-
