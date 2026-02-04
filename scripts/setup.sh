@@ -4,7 +4,7 @@ echo "Starting dotfiles setup..."
 
 # Update and install packages
 echo "Installing packages..."
-sudo pacman -Syu --noconfirm ripgrep fzf git ttf-cascadia-mono-nerd nodejs npm python python-pip curl go rustup wmctrl zoxide
+sudo pacman -Syu --noconfirm --needed ripgrep fzf git ttf-cascadia-mono-nerd nodejs npm python python-pip curl go rustup wmctrl zoxide
 # neovim commented out - using NvChad instead
 # sudo pacman -S --noconfirm neovim
 
@@ -52,6 +52,7 @@ echo "Copying configurations..."
 [ -d ~/.dotfiles/hypr ] && cp -r ~/.dotfiles/hypr/* ~/.config/hypr/
 [ -d ~/.dotfiles/niri ] && cp -r ~/.dotfiles/niri/* ~/.config/niri/
 [ -d ~/.dotfiles/waybar ] && cp -r ~/.dotfiles/waybar/* ~/.config/waybar/
+[ -d ~/.dotfiles/waybar ] && command -v waybar >/dev/null 2>&1 && { pkill waybar 2>/dev/null || true; waybar & }
 [ -d ~/.dotfiles/vicinae ] && cp -r ~/.dotfiles/vicinae/* ~/.config/vicinae/
 [ -f ~/.dotfiles/zsh/.zshrc ] && cp ~/.dotfiles/zsh/.zshrc ~/.zshrc
 
