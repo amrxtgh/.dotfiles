@@ -36,6 +36,7 @@
 	},
 	"clock": {
 		"interval": 5,
+		"format": "{:%A %H:%M types}",
 		"format-alt": "{:%Y-%m-%d}",
 		"tooltip-format": "<tt><small>{calendar}</small></tt>",
 		"calendar": {
