@@ -196,7 +196,12 @@ export PATH=/home/amrxtgh/.opencode/bin:$PATH
 
 export PATH="$HOME/.npm-global/bin:$PATH"
 eval "$(zoxide init zsh)"
+
 # Fix Java Swing rendering under Wayland
+#i woke up and choose violence
+export GTK_THEME=Adwaita:dark
+export XDG_CURRENT_DESKTOP=Niri
+export XDG_SESSION_TYPE=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 
