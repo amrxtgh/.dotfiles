@@ -51,7 +51,7 @@ window#waybar {
 }
 
 #custom-logo {
-	color: @accent;
+	color: #1793d1;
 	font-size: 16px;
 	padding: 0 6px 0 2px;
 	margin-right: 2px;
@@ -125,12 +125,17 @@ window#waybar {
 	margin-left: 4px;
 	margin-right: 2px;
 	color: @accent_2;
+	background: @module_bg;
+	border: 1px solid @module_border;
+	box-shadow: none;
+	font-weight: 600;
+	letter-spacing: 0.1px;
 }
 
 #pulseaudio,
 #pulseaudio.mic {
-	font-size: 11px;
-	padding: 2px 5px;
+	font-size: 12px;
+	padding: 2px 6px;
 }
 
 #cpu {
@@ -141,6 +146,9 @@ window#waybar {
 
 #pulseaudio.mic.source-muted {
 	color: @danger;
+	background: @module_bg;
+	border: 1px solid @module_border;
+	box-shadow: none;
 }
 
 #network.disconnected {
