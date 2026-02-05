@@ -111,8 +111,8 @@
 			"interval": 1,
 			"scroll-step": 0,
 			"format": "{format_source}",
-			"format-source": " ",
-			"format-source-muted": " ",
+			"format-source": "  ",
+			"format-source-muted": "  ",
 			"tooltip-format": "{desc}",
 			"on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 		},

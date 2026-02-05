@@ -122,14 +122,14 @@ window#waybar {
 }
 
 #pulseaudio.mic {
-	margin-left: 4px;
-	margin-right: 2px;
 	color: @accent_2;
 	background: @module_bg;
 	border: 1px solid @module_border;
 	box-shadow: none;
 	font-weight: 600;
 	letter-spacing: 0.1px;
+	min-width: 24px;
+	padding: 2px 8px;
 }
 
 #pulseaudio,
@@ -139,9 +139,11 @@ window#waybar {
 }
 
 #cpu {
-	font-size: 11px;
-	padding: 2px 4px;
-	margin-right: 1px;
+	font-size: 12px;
+	padding: 2px 6px;
+	margin-right: 3px;
+	font-weight: 600;
+	letter-spacing: 0.1px;
 }
 
 #pulseaudio.mic.source-muted {
