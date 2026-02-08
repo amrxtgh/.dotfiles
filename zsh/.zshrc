@@ -203,5 +203,9 @@ export GTK_THEME=Adwaita:dark
 export XDG_CURRENT_DESKTOP=Niri
 export XDG_SESSION_TYPE=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
-export AWT_TOOLKIT=MToolkit
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+export MOZ_ENABLE_WAYLAND=1  # Firefox
+export QT_QPA_PLATFORM=wayland  # Qt apps
+export CLUTTER_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland
 
