@@ -52,7 +52,8 @@ echo "Copying configurations..."
 [ -d ~/.dotfiles/hypr ] && cp -r ~/.dotfiles/hypr/* ~/.config/hypr/
 [ -d ~/.dotfiles/niri ] && cp -r ~/.dotfiles/niri/* ~/.config/niri/
 [ -d ~/.dotfiles/waybar ] && cp -r ~/.dotfiles/waybar/* ~/.config/waybar/
-[ -d ~/.dotfiles/waybar ] && command -v waybar >/dev/null 2>&1 && { pkill waybar 2>/dev/null || true; waybar & }
+# Restart waybar only if niri IPC is available in this shell.
+[ -d ~/.dotfiles/waybar ] && command -v waybar >/dev/null 2>&1 && [ -n "${NIRI_SOCKET:-}" ] && { pkill waybar 2>/dev/null || true; waybar & }
 [ -d ~/.dotfiles/vicinae ] && cp -r ~/.dotfiles/vicinae/* ~/.config/vicinae/
 [ -f ~/.dotfiles/zsh/.zshrc ] && cp ~/.dotfiles/zsh/.zshrc ~/.zshrc
 

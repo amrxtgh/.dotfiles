@@ -15,10 +15,8 @@
 		"format-ru": "Ru",
 	},
 	"niri/workspaces": {
-		"disable-scroll": false,
 		"all-outputs": false,
-		"active-only": false,
-		"show-special": false,
+		"current-only": false,
 		"format": "{index}"
 	},
 	"custom/logo": {
