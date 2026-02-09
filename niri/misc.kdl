@@ -10,6 +10,20 @@ spawn-at-startup "hypridle"
 spawn-sh-at-startup "pgrep -x waybar >/dev/null || waybar"
 spawn-at-startup "swaybg" "-i" "/home/amrxtgh/Downloads/pics/wallpaper.jpg" "-m" "fill"
 
+// Environment variables for apps launched by niri.
+// Electron is forced to X11 to ensure XWayland fallback works reliably.
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "x11"
+    GTK_THEME "Adwaita:dark"
+    XDG_CURRENT_DESKTOP "Niri"
+    XDG_SESSION_TYPE "wayland"
+    _JAVA_AWT_WM_NONREPARENTING "1"
+    MOZ_ENABLE_WAYLAND "1"
+    QT_QPA_PLATFORM "wayland"
+    CLUTTER_BACKEND "wayland"
+    SDL_VIDEODRIVER "wayland"
+}
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
