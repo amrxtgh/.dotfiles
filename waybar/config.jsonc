@@ -7,7 +7,7 @@
 	// Choose the order of the modules
 	"modules-left": ["custom/logo", "niri/workspaces"],
 	"modules-center": ["clock"],
-	"modules-right": ["pulseaudio#mic", "pulseaudio", "network", "cpu", "memory", "battery", "group/power"],
+	"modules-right": ["pulseaudio#mic", "pulseaudio", "backlight", "network", "cpu", "memory", "battery", "group/power"],
 
 	"niri/language": {
 		"format": "{}",
@@ -114,6 +114,14 @@
 			"tooltip-format": "{desc}",
 			"on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 		},
+	"backlight": {
+		"device": "intel_backlight",
+		"format": "{percent}% {icon}",
+		"format-icons": ["󰃞", "󰃟", "󰃠"],
+		"tooltip": true,
+		"on-scroll-up": "brightnessctl --class=backlight set +5%",
+		"on-scroll-down": "brightnessctl --class=backlight set 5%-"
+	},
 
 	"group/power": {
 		"orientation": "inherit",
