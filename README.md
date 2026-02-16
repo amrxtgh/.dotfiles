@@ -8,10 +8,9 @@ Personal configuration files for my Linux setup.
 ```bash
 # Install one of these compositors:
 sudo pacman -S hyprlock    # Hyprland with lock screen
-sudo pacman -S niri                 # Niri scrollable-tiling compositor
 
 # Status bar and launcher
-sudo pacman -S waybar vicinae
+sudo pacman -S vicinae
 ```
 
 ### Core Tools (already in setup.sh)
@@ -35,8 +34,6 @@ cd ~/.dotfiles
 
 ## Configs Included
 - **hypr/** - Hyprland window manager configs
-- **niri/** - Niri compositor configs  
-- **waybar/** - Status bar configs
 - **vicinae/** - Application launcher config
 - **alacritty/** - Terminal emulator configs
 - **kitty/** - Terminal emulator configs
@@ -44,4 +41,3 @@ cd ~/.dotfiles
 - **zsh/** - Shell configs
 - **git/** - Git configuration
 - **ssh/** - SSH keys and config
-

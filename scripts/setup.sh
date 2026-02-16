@@ -25,8 +25,6 @@ rm -f ~/.zshrc
 rm -rf ~/.config/kitty
 rm -rf ~/.config/alacritty
 rm -rf ~/.config/hypr
-rm -rf ~/.config/niri
-rm -rf ~/.config/waybar
 rm -rf ~/.config/vicinae
 rm -f ~/.ssh/id_rsa_github
 rm -f ~/.ssh/config
@@ -36,8 +34,6 @@ echo "Creating directories..."
 mkdir -p ~/.config/kitty
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/hypr
-mkdir -p ~/.config/niri
-mkdir -p ~/.config/waybar
 mkdir -p ~/.config/vicinae
 mkdir -p ~/.ssh
 
@@ -50,10 +46,6 @@ echo "Copying configurations..."
 [ -d ~/.dotfiles/alacritty ] && cp -r ~/.dotfiles/alacritty/* ~/.config/alacritty/
 [ -d ~/.dotfiles/kitty ] && cp -r ~/.dotfiles/kitty/* ~/.config/kitty/
 [ -d ~/.dotfiles/hypr ] && cp -r ~/.dotfiles/hypr/* ~/.config/hypr/
-[ -d ~/.dotfiles/niri ] && cp -r ~/.dotfiles/niri/* ~/.config/niri/
-[ -d ~/.dotfiles/waybar ] && cp -r ~/.dotfiles/waybar/* ~/.config/waybar/
-# Restart waybar only if niri IPC is available in this shell.
-[ -d ~/.dotfiles/waybar ] && command -v waybar >/dev/null 2>&1 && [ -n "${NIRI_SOCKET:-}" ] && { pkill waybar 2>/dev/null || true; waybar & }
 [ -d ~/.dotfiles/vicinae ] && cp -r ~/.dotfiles/vicinae/* ~/.config/vicinae/
 [ -f ~/.dotfiles/zsh/.zshrc ] && cp ~/.dotfiles/zsh/.zshrc ~/.zshrc
 
