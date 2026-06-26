@@ -1,7 +1,7 @@
 return {
     {
-        "nvim-lua/plenary.nvim",
-        name = "plenary",
-        build = false,
+		"nvim-lua/plenary.nvim",
+		name = "plenary",
+		build = false,
     },
 }
