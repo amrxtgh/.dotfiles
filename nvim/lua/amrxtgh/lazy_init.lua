@@ -18,4 +18,5 @@ require("lazy").setup({
   spec = "amrxtgh.lazy",
   change_detection = { notify = false },
   rocks = { enabled = false },
+  git = { url_format = "git@github.com:%s.git", },
 })
