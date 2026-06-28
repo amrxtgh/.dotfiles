@@ -18,7 +18,6 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
-				"rust_analyzer",
 				"clangd",
 				"pylsp",
 			},
@@ -57,9 +56,6 @@ return {
 				},
 			},
 		})
-		vim.lsp.config("rust-analyzer", {
-			capabilities = capabilities,
-		})
 		vim.lsp.config("clangd", {
 			capabilities = capabilities,
 		})
@@ -74,7 +70,6 @@ return {
 			},
 		})
 		vim.lsp.enable("lua_ls")
-		vim.lsp.enable("rust-analyzer")
 		vim.lsp.enable("clangd")
 		vim.lsp.enable("pylsp")
 
