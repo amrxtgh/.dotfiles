@@ -31,26 +31,27 @@ return {
 					require("luasnip").lsp_expand(args.body)
 				end,
 			},
-			mappings = cmp.mapping.preset.insert({
+			mapping = cmp.mapping.preset.insert({
 				["<Tab>"] = cmp.mapping.confirm({ select = true }),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<C-n>"] = cmp.mapping.select_next_item(),
 				["<C-p>"] = cmp.mapping.select_prev_item(),
+				["<C-Space>"] = cmp.mapping.complete(),
 			}),
-			source = cmp.config.sources({
+			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 			}, {
 				{ name = "buffer" },
-			})
+			}),
 		})
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
-			setup = {
+			settings = {
 				Lua = {
-					diagnosis = {
+					diagnostics = {
 						globals = { "vim" },
 					},
 				},
@@ -60,11 +61,16 @@ return {
 			capabilities = capabilities,
 		})
 		vim.lsp.config("pylsp", {
+			cmd = { "pylsp" },
+			filetypes = { "python" },
 			capabilities = capabilities,
 			settings = {
 				pylsp = {
 					plugins = {
-						pylint = { enabled = true },
+						pylint = { enabled = false },
+						pycodestyle = { enabled = false },
+						pyflakes = { enabled = true },
+						mccabe = { enabled = false },
 					},
 				},
 			},
@@ -74,6 +80,9 @@ return {
 		vim.lsp.enable("pylsp")
 
 		vim.diagnostic.config({
+			virtual_text = true,
+			virtual_lines = false,
+			signs = true,
 			float = {
 				border = "rounded",
 				source = "always",
