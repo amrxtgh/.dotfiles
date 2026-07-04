@@ -16,6 +16,7 @@ return {
 	config = function()
 		require("mason").setup()
 		require("mason-lspconfig").setup({
+			automatic_enable = false,
 			ensure_installed = {
 				"lua_ls",
 				"clangd",
@@ -24,6 +25,8 @@ return {
 		})
 
 		require("fidget").setup({})
+
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local cmp = require("cmp")
 		cmp.setup({
 			snippet = {
@@ -45,7 +48,6 @@ return {
 				{ name = "buffer" },
 			}),
 		})
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
@@ -75,6 +77,7 @@ return {
 				},
 			},
 		})
+
 		vim.lsp.enable("lua_ls")
 		vim.lsp.enable("clangd")
 		vim.lsp.enable("pylsp")
