@@ -5,12 +5,12 @@ return {
 	init = function()
 		vim.g.rustaceanvim = {
 			tools = {
-				hover_actions = {
-					["auto_focus"] = true,
+				float_win_config = {
+					auto_focus = true,
 				},
 			},
 			server = {
-				on_attach = function(client, bufnr) end,
+				capabilities = require("cmp_nvim_lsp").default_capabilities(),
 				default_settings = {
 					["rust-analyzer"] = {
 						cargo = {
