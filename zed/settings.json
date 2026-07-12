@@ -1,0 +1,42 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "cursor_blink": false,
+  "cli_default_open_behavior": "existing_window",
+  "show_edit_predictions": false,
+  "mouse_wheel_zoom": true,
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
+  "proxy": "",
+  "buffer_font_family": "JetBrains Mono",
+  "icon_theme": "Zed (Default)",
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": "Cursor Dark",
+    "project_panel": {
+      "dock": "left"
+    },
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment":{
+        "font_style": null
+      },
+      "type":{
+        "font_style":null
+      },
+      "keyword":{
+        "font_style":null
+      }
+    }
+  }
+}
