@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "diff_view_style": "split",
   "cursor_blink": false,
   "cli_default_open_behavior": "existing_window",
   "show_edit_predictions": false,
@@ -18,9 +19,15 @@
   },
   "proxy": "",
   "buffer_font_family": "JetBrains Mono",
+  "buffer_font_weight": 300,
+  "buffer_font_features": {
+    "calt": false,
+    "liga": false
+  },
   "icon_theme": "Zed (Default)",
   "vim_mode": true,
   "ui_font_size": 16,
+  "ui_font_weight": 100,
   "buffer_font_size": 15,
   "theme": "Cursor Dark",
     "project_panel": {
