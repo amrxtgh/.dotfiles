@@ -5,11 +5,19 @@ return {
 		"nvim-lua/plenary.nvim"
 	},
 	config = function()
-		require("telescope").setup({})
-
 		local builtin = require("telescope.builtin")
+
+		require("telescope").setup({
+			defaults = {
+				file_ignore_patterns = { "node_modules", ".git/" },
+				path_display = { "truncate" },
+			},
+		})
+
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-		vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+		vim.keymap.set("n", "<leader>fg", function()
+			builtin.live_grep({ additional_args = { "--ignore-case" } })
+		end, {})
 		vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 	end,
