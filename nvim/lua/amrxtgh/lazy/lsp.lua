@@ -61,6 +61,13 @@ return {
 		})
 		vim.lsp.config("clangd", {
 			capabilities = capabilities,
+			cmd = {
+				"clangd",
+				"--background-index",
+				"--clang-tidy",
+				"--completion-style=detailed",
+				"--header-insertion=iwyu",
+			},
 		})
 		vim.lsp.config("pylsp", {
 			cmd = { "pylsp" },
@@ -81,6 +88,11 @@ return {
 		vim.lsp.enable("lua_ls")
 		vim.lsp.enable("clangd")
 		vim.lsp.enable("pylsp")
+
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "References" })
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover docs" })
+		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 
 		vim.diagnostic.config({
 			virtual_text = true,
