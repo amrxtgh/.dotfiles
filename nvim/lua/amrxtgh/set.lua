@@ -1,7 +1,7 @@
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 
-vim.opt.guicursor = ""
+vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -28,3 +28,4 @@ vim.opt.wildmode = "longest:full"
 vim.opt.wildmenu = true
 vim.opt.showcmd = true
 vim.opt.ruler = true
+
