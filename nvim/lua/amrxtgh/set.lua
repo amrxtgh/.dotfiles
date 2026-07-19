@@ -1,7 +1,7 @@
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 
-vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon400"
 vim.opt.number = false
 vim.opt.relativenumber = false
 
