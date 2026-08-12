@@ -70,13 +70,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  history-substring-search
-  )
-# Reset exit code to 0 on Ctrl+C
+plugins=( git zsh-autosuggestions zsh-syntax-highlighting history-substring-search )
+
 source $ZSH/oh-my-zsh.sh
 
 #optimize history settings
@@ -100,16 +95,14 @@ setopt sharehistory
 # Minimal prompt
 #PROMPT='%F{white}%n@%m%f %F{red}::%f %F{green}%~%f$(git_prompt_info) '
 #PROMPT='%F{white}%n@%m%f %F{red}::%f %F{green}%~%f$(git_prompt_info) %F{blue}❯%f '
+
 autoload -Uz vcs_info
-precmd() { vcs_info }
-
-zstyle ':vcs_info:git:*' formats '%F{blue}git:%f%F{red}(%b)%f'
 zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats '(%F{red}%b%f)'
+precmd() { vcs_info; _loc=${${PWD#$HOME}#/}; _p=; [[ -n $_loc ]] && _p=/%F{green}$_loc%f }
 
-PROMPT='%F{green}%~%f ${vcs_info_msg_0_} %F{yellow}❯ %f'
-#PROMPT='%F{green}%~%f ${vcs_info_msg_0_} %F{yellow}➜%f $ '
-
-
+PROMPT='%F{cyan}%n@%m%f$_p ${vcs_info_msg_0_}%F{cyan}❯%f '
+RPROMPT='%(?..%F{red}✘ %?%f)'
 # Optional: reset exit code on Ctrl+C
 TRAPINT() { return 0 }
 
@@ -117,7 +110,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 DISABLE_AUTO_UPDATE="true"
 
 #for optimal performance
-ZSH_AUTOSUGGEST_USE_ASYNC=true
+ZSH_AUTOSUGGEST_USE_ASYNC=false
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 # User configuration
@@ -136,6 +129,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 
 # Compilation flags
 export ARCHFLAGS="-arch $(uname -m)"
+eval "$(zoxide init zsh)"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
@@ -143,15 +137,17 @@ export ARCHFLAGS="-arch $(uname -m)"
 # the $ZSH_CUSTOM folder, with .zsh extension. Examples:
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
+
 # For a full list of active aliases, run `alias`.
-alias neovide='pkill -f neovide; GDK_BACKEND=x11 setsid neovide >/dev/null 2>&1 &'
 alias n="nvim"
+alias hx="helix"
 alias q="clear"
 alias off="poweroff"
 alias e="exit"
 alias ff="fastfetch"
 alias rm='rm -i'
-alias or='ollama run deepseek-r1:1.5b'
+alias sv='source .venv/bin/activate'
+alias open='xdg-open'
 
 #git aliases
 alias gst="git status"
@@ -163,7 +159,15 @@ alias gpsh="git push"
 alias gl="git log"
 alias gco="git checkout"
 alias gb="git branch"
-alias gp="git pull"           # pull updates from remote
+alias gp="git pull"           
+
+function fm() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
 xxx() {
     # Prompt for commit message
     echo -n "Enter commit message: "
@@ -180,7 +184,7 @@ xxx() {
     git commit -m "$msg"
     git push -u origin main
 }
-#alias xxx="git add . && git commit -m "update" && git push"
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -195,5 +199,8 @@ export ONEAPI_DEVICE_SELECTOR=level_zero:gpu
 export PATH=/home/amrxtgh/.opencode/bin:$PATH
 
 export PATH="$HOME/.npm-global/bin:$PATH"
-eval "$(zoxide init zsh)"
+
+
+
+
 
