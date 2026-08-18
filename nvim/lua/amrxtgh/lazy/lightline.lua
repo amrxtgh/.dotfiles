@@ -4,6 +4,7 @@ return {
 	config = function()
 		vim.o.showmode = false
 		vim.g.lightline = {
+			colorscheme = "elflord_custom",
 			active = {
 				left = {
 					{ "mode", "paste" },
