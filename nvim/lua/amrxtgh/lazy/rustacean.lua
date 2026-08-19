@@ -11,8 +11,8 @@ return {
 			},
 			server = {
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-				on_attach = function(bufnr)
-					local opts = { silent = true, buffer = bufnr }
+			on_attach = function(client, bufnr)
+				local opts = { silent = true, buffer = bufnr }
 					-- Standard Navigation
 					vim.keymap.set('n', 'gd', vim.lsp.buf.definition, vim.tbl_extend('force', opts, { desc = "Go to Definition" }))
 					vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, vim.tbl_extend('force', opts, { desc = "Go to Type Definition" }))
