@@ -1,4 +1,4 @@
-# dotfiles
+# .dotfiles
 
 hyprland + alacritty + kitty + neovim + zsh on arch
 
@@ -19,7 +19,7 @@ hyprland + alacritty + kitty + neovim + zsh on arch
 sudo pacman -S neovim alacritty kitty zsh git ripgrep fzf yazi fastfetch
 
 # optional
-yay -S zoxide vicinae
+paru -S zoxide vicinae
 ```
 
 install [jetbrains mono nerd font](https://www.nerdfonts.com/font-downloads) — used across terminals.
@@ -41,6 +41,7 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM
 ```bash
 git clone --recurse-submodules https://github.com/amrxtgh/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
+chmod +x script.sh
 ./script.sh
 ```
 
