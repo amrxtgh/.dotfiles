@@ -129,7 +129,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 
 # Compilation flags
 export ARCHFLAGS="-arch $(uname -m)"
-eval "$(zoxide init zsh)"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
@@ -148,6 +147,7 @@ alias ff="fastfetch"
 alias rm='rm -i'
 alias sv='source .venv/bin/activate'
 alias open='xdg-open'
+alias tm="tmux new -s main"
 
 #git aliases
 alias gst="git status"
@@ -159,8 +159,7 @@ alias gpsh="git push"
 alias gl="git log"
 alias gco="git checkout"
 alias gb="git branch"
-alias gp="git pull"           
-
+alias gp="git pull"           # pull updates from remote
 function fm() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	command yazi "$@" --cwd-file="$tmp"
@@ -199,8 +198,16 @@ export ONEAPI_DEVICE_SELECTOR=level_zero:gpu
 export PATH=/home/amrxtgh/.opencode/bin:$PATH
 
 export PATH="$HOME/.npm-global/bin:$PATH"
+eval "$(zoxide init zsh)"
+
+. "$HOME/.local/bin/env"
 
 
 
 
 
+
+# Added by Antigravity CLI installer
+export PATH="/home/amrxtgh/.local/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
