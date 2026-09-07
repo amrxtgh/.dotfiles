@@ -1,25 +1,26 @@
 # dotfiles
 
-hyprland + alacritty/kitty + zsh on arch
+hyprland + alacritty + kitty + neovim + zsh on arch
 
-## what's in here
+## what's here
 
-- `alacritty/` — terminal themes (lovely, matte-black, catppuccin-latte, catppuccin-mocha, tokyonight)
-- `kitty/` — terminal config + themes (hackerman, lovely)
-- `zsh/` — oh-my-zsh setup, custom prompt, aliases, yazi cd-on-exit
-- `git/` — git config
-- `vicinae/` — app launcher
+- `alacritty/` — toml config + themes (lovely, matte-black, catppuccin, tokyonight)
+- `kitty/` — conf + themes (hackerman, lovely)
+- `neovim/` — submodule → [amrxtgh/Neovim](https://github.com/amrxtgh/Neovim) (lazy.nvim, custom elflord colorscheme)
+- `zsh/` — oh-my-zsh, prompt, aliases, yazi cd-on-exit
+- `git/` — gitconfig
+- `vicinae/` — app launcher config
 
 ## setup
 
 ```bash
-git clone <this-repo> ~/.dotfiles
+git clone --recurse-submodules <this-repo> ~/.dotfiles
 cd ~/.dotfiles
-# symlink configs manually or use your preferred dotfile manager
+# symlink what you need to ~/.config
 ```
 
-symlinks to `~/.config` so you can `git pull` and everything stays updated.
+pull to update. everything lives in `~/.config` via symlinks.
 
-## my stack
+## stack
 
-arch, hyprland, alacritty, kitty, neovim, zsh, ripgrep, fzf, zoxide, yazi, fastfetch. jetbrains mono nerd font everywhere.
+arch, hyprland, alacritty, kitty, neovim, zsh, ripgrep, fzf, zoxide, yazi, fastfetch. jetbrains mono nerd font.
