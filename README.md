@@ -4,18 +4,18 @@ hyprland + alacritty/kitty + zsh on arch
 
 ## what's in here
 
-- `alacritty/` — terminal themes (lovely, matte-black, catppuccin, tokyonight)
-- `kitty/` — terminal config + themes
+- `alacritty/` — terminal themes (lovely, matte-black, catppuccin-latte, catppuccin-mocha, tokyonight)
+- `kitty/` — terminal config + themes (hackerman, lovely)
 - `zsh/` — oh-my-zsh setup, custom prompt, aliases, yazi cd-on-exit
 - `git/` — git config
 - `vicinae/` — app launcher
 
-## quick setup
+## setup
 
 ```bash
 git clone <this-repo> ~/.dotfiles
 cd ~/.dotfiles
-./scripts/setup.sh
+# symlink configs manually or use your preferred dotfile manager
 ```
 
 symlinks to `~/.config` so you can `git pull` and everything stays updated.
