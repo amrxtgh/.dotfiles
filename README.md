@@ -1,43 +1,25 @@
-# Dotfiles
+# dotfiles
 
-Personal configuration files for my Linux setup.
+hyprland + alacritty/kitty + zsh on arch
 
-## Required Packages
+## what's in here
 
-### Window Managers & Desktop
-```bash
-# Install one of these compositors:
-sudo pacman -S hyprlock    # Hyprland with lock screen
+- `alacritty/` — terminal themes (lovely, matte-black, catppuccin, tokyonight)
+- `kitty/` — terminal config + themes
+- `zsh/` — oh-my-zsh setup, custom prompt, aliases, yazi cd-on-exit
+- `git/` — git config
+- `vicinae/` — app launcher
 
-# Status bar and launcher
-sudo pacman -S vicinae
-```
-
-### Core Tools (already in setup.sh)
-```bash
-ripgrep fzf git ttf-cascadia-mono-nerd nodejs npm 
-python python-pip curl go rustup wmctrl zoxide
-```
-
-### Optional
-```bash
-# Neovim is commented out in setup.sh - using NvChad instead
-# yay -S neovim
-```
-
-## Installation
+## quick setup
 
 ```bash
+git clone <this-repo> ~/.dotfiles
 cd ~/.dotfiles
 ./scripts/setup.sh
 ```
 
-## Configs Included
-- **hypr/** - Hyprland window manager configs
-- **vicinae/** - Application launcher config
-- **alacritty/** - Terminal emulator configs
-- **kitty/** - Terminal emulator configs
-- **nvim/** - Neovim configs (commented out in setup)
-- **zsh/** - Shell configs
-- **git/** - Git configuration
-- **ssh/** - SSH keys and config
+symlinks to `~/.config` so you can `git pull` and everything stays updated.
+
+## my stack
+
+arch, hyprland, alacritty, kitty, neovim, zsh, ripgrep, fzf, zoxide, yazi, fastfetch. jetbrains mono nerd font everywhere.
