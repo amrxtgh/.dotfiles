@@ -10,16 +10,17 @@ hyprland + alacritty + kitty + neovim + zsh on arch
 - `zsh/` — oh-my-zsh, prompt, aliases, yazi cd-on-exit
 - `git/` — gitconfig
 - `vicinae/` — app launcher config
+- `script.sh` — one-shot setup, symlinks everything to the right place
 
 ## setup
 
 ```bash
 git clone --recurse-submodules <this-repo> ~/.dotfiles
 cd ~/.dotfiles
-# symlink what you need to ~/.config
+./script.sh
 ```
 
-pull to update. everything lives in `~/.config` via symlinks.
+done. restart your terminal.
 
 ## stack
 
