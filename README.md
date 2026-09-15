@@ -47,19 +47,6 @@ chmod +x script.sh
 
 restart your terminal. neovim plugins will install on first launch via lazy.nvim.
 
-## what script.sh does
-
-symlinks (replaces existing configs):
-
-| source | destination |
-|--------|-------------|
-| `alacritty/` | `~/.config/alacritty` |
-| `kitty/` | `~/.config/kitty` |
-| `neovim/Voidvim/*` | `~/.config/nvim/` |
-| `git/.gitconfig` | `~/.gitconfig` |
-| `zsh/.zshrc` | `~/.zshrc` |
-| `vicinae/` | `~/.config/vicinae` |
-
 ## stack
 
 arch, hyprland, alacritty, kitty, neovim, zsh, ripgrep, fzf, zoxide, yazi, fastfetch. jetbrains mono nerd font.
