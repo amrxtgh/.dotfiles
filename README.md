@@ -47,4 +47,4 @@ restart your terminal. neovim plugins will install on first launch via lazy.nvim
 
 ## stack
 
-arch, hyprland, alacritty, kitty, neovim, zsh, ripgrep, fzf, zoxide, yazi, fastfetch. jetbrains mono nerd font.
+arch, kde, alacritty, kitty, neovim, zsh, ripgrep, fzf, zoxide, yazi, fastfetch. 
