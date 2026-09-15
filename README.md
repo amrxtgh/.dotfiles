@@ -22,8 +22,6 @@ sudo pacman -S neovim alacritty kitty zsh git ripgrep fzf yazi fastfetch
 paru -S zoxide vicinae
 ```
 
-install [jetbrains mono nerd font](https://www.nerdfonts.com/font-downloads) — used across terminals.
-
 install [oh-my-zsh](https://ohmyz.sh/) before running the script:
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
