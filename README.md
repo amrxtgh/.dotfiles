@@ -1,11 +1,11 @@
 # .dotfiles
 
-hyprland + alacritty + kitty + neovim + zsh on arch
+kde-plasma + arch linux 
 
 ## what's here
 
-- `alacritty/` — toml config + themes (lovely, matte-black, catppuccin, tokyonight)
-- `kitty/` — conf + themes (hackerman, lovely)
+- `alacritty/` — toml config + themes (previously used)
+- `kitty/` — conf + themes (i use default kitten themes)
 - `neovim/` — submodule → [amrxtgh/Neovim](https://github.com/amrxtgh/Neovim) (lazy.nvim, custom elflord colorscheme)
 - `zsh/` — oh-my-zsh, prompt, aliases, yazi cd-on-exit
 - `git/` — gitconfig
