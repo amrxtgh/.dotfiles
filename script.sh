@@ -43,4 +43,18 @@ echo "  vicinae"
 rm -rf "$CONFIG/vicinae"
 ln -s "$DOTFILES/vicinae" "$CONFIG/vicinae"
 
+# --- dwm ---
+echo "  dwm"
+mkdir -p "$HOME/.dwm"
+rm -f "$HOME/.dwm/autostart.sh"
+ln -s "$DOTFILES/dwm/autostart.sh" "$HOME/.dwm/autostart.sh"
+# dwm source lives in ~/dwm (suckless build); link configs there
+if [ -d "$HOME/dwm" ]; then
+    rm -f "$HOME/dwm/config.h" "$HOME/dwm/config.def.h" "$HOME/dwm/config.mk"
+    ln -s "$DOTFILES/dwm/config.h" "$HOME/dwm/config.h"
+    ln -s "$DOTFILES/dwm/config.def.h" "$HOME/dwm/config.def.h"
+    ln -s "$DOTFILES/dwm/config.mk" "$HOME/dwm/config.mk"
+    echo "  dwm configs linked to ~/dwm (rebuild with: cd ~/dwm && sudo make clean install)"
+fi
+
 echo "done. restart your terminal or run: source ~/.zshrc"
