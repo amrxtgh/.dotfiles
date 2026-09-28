@@ -10,7 +10,6 @@ kde-plasma + arch linux
 - `zsh/` — oh-my-zsh, prompt, aliases, yazi cd-on-exit
 - `git/` — gitconfig
 - `vicinae/` — app launcher config
-- `dwm/` — config.h, config.def.h, config.mk, autostart.sh (suckless dwm, source in `~/dwm`)
 - `script.sh` — one-shot setup, symlinks everything to `~/.config`
 
 ## dependencies

@@ -200,7 +200,7 @@ export PATH=/home/amrxtgh/.opencode/bin:$PATH
 export PATH="$HOME/.npm-global/bin:$PATH"
 eval "$(zoxide init zsh)"
 
-. "$HOME/.local/bin/env"
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
 
 
