@@ -10,22 +10,30 @@
 
 {
    "$schema": "https://vicinae.com/schemas/config.json",
-   "escape_key_behavior": "",
    "font": {
       "normal": {
-         "family": "Adwaita Sans"
+         "family": "auto"
       }
    },
    "theme": {
       "dark": {
-         "name": "rose-pine-moon"
+         "name": "rose-pine"
       }
    },
-   "launcher_window": {
-      "opacity": 0.2,
-      "compact_mode": {
-         "enabled": false
-      }
-   },
-   "favorites": []
+    "launcher_window": {
+       "size": {
+          "width": 800,
+          "height": 500
+       },
+       "rounding": 12,
+       "opacity": 0.96,
+       "blur": {
+          "enabled": true
+       },
+       "material": "auto",
+       "compact_mode": {
+          "enabled": false
+       }
+    }
 }
+
