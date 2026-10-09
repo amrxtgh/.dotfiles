@@ -101,10 +101,14 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats '(%F{red}%b%f)'
 precmd() { vcs_info; _loc=${${PWD#$HOME}#/}; _p=; [[ -n $_loc ]] && _p=/%F{green}$_loc%f }
 
-PROMPT='%F{cyan}%n@%m%f$_p ${vcs_info_msg_0_}%F{cyan}❯%f '
-RPROMPT='%(?..%F{red}✘ %?%f)'
+#PROMPT='%F{cyan}%n@%m%f$_p ${vcs_info_msg_0_}%F{cyan}❯%f '
+#RPROMPT='%(?..%F{red}✘ %?%f)'
 # Optional: reset exit code on Ctrl+C
-TRAPINT() { return 0 }
+#TRAPINT() { return 0 }
+
+# Suckless style: small, Tokyo Night - PROMPT='[%n@%m %1~]$ '
+# brackets #a9b1d6 (light gray), user@host #7aa2f7 (blue), dir #7dcfff (cyan), $ #9ece6a (green)
+PROMPT='%F{#a9b1d6}[%f%F{#7aa2f7}%n@%m%f %F{#7dcfff}%1~%f%F{#a9b1d6}]%f%F{#9ece6a}$%f '
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 DISABLE_AUTO_UPDATE="true"
@@ -194,6 +198,8 @@ source /opt/intel/oneapi/setvars.sh >/dev/null 2>&1
 # Force SYCL to use Intel Xe GPU
 export SYCL_DEVICE_FILTER=level_zero:gpu
 export ONEAPI_DEVICE_SELECTOR=level_zero:gpu
+# Rust 
+. "$HOME/.cargo/env" 
 # opencode
 export PATH=/home/amrxtgh/.opencode/bin:$PATH
 
@@ -211,3 +217,5 @@ eval "$(zoxide init zsh)"
 export PATH="/home/amrxtgh/.local/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. "$HOME/.local/share/../bin/env"
